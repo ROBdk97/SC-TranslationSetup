@@ -32,5 +32,5 @@ jobs:
       with:
         # Artifact name
         name: Release
-        path: ./SC-TranslationSetup/bin/Release/net8.0-windows/win-x64/publish/*.exe
+        path: /home/runner/work/SC-TranslationSetup/SC-TranslationSetup/bin/Release/net8.0-windows/win-x64/publish/*.exe
           
