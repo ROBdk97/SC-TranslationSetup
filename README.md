@@ -5,10 +5,10 @@ Welcome to the `SC-TranslationSetup` repository, the go-to setup tool for locali
 ### Features
 
 - **Easy Installation:** Streamlines the process of installing localization files into Star Citizen.
+- **Automatically finds Star Citizen Installation:** Tries to find the Star Citizen Installation and asks you the Version (LIVE/PTU,..) you want to install.
 - **Multi-Language Support:** Compatible with all languages provided in the StarCitizen-Localization repo.
 - **User-Friendly Interface:** Intuitive design for hassle-free operation.
 - **Automatic Updates:** Automatically fetches the latest translations from the StarCitizen-Localization repository on each run.
-- **Cross-Platform Compatibility:** Runs on multiple operating systems.
 
 ### Download
 
