@@ -1,5 +1,5 @@
 ## SC-TranslationSetup Tool
-[![.NET Build and Release](https://github.com/ROBdk97/SC-TranslationSetup/actions/workflows/dotnet.yml/badge.svg)](https://github.com/ROBdk97/SC-TranslationSetup/actions/workflows/dotnet.yml)
+![GitHub all releases](https://img.shields.io/github/downloads/ROBdk97/SC-TranslationSetup/total)
 
 Welcome to the `SC-TranslationSetup` repository, the go-to setup tool for localizing Star Citizen using the translations from the [StarCitizen-Localization](https://github.com/Dymerz/StarCitizen-Localization) repository. This tool is designed to simplify the installation of localization files, ensuring a seamless experience for players looking to enjoy Star Citizen in their preferred language.
 
