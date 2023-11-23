@@ -1,6 +1,13 @@
 ## SC-TranslationSetup Tool
 ![GitHub alle Veröffentlichungen](https://img.shields.io/github/downloads/ROBdk97/SC-TranslationSetup/total)
 
+- 🇬🇧 [Instructions in English.](README.md).
+- 🇫🇷 [Instruction en Français](README_fr.md).
+- 🇩🇪 [Anleitung auf Deutsch](README_de.md).
+- 🇪🇸 [Instrucciones en Español](README_es.md).
+- 🇮🇹 [Istruzioni in Italiano](README_it.md).
+- 🇧🇷 [Instrução em Português](README_ptbr.md).
+
 Willkommen im `SC-TranslationSetup`-Repository, dem bevorzugten Einrichtungstool für die Lokalisierung von Star Citizen unter Verwendung der Übersetzungen aus dem [StarCitizen-Localization](https://github.com/Dymerz/StarCitizen-Localization)-Repository. Dieses Tool wurde entwickelt, um die Installation von Lokalisierungsdateien zu vereinfachen und ein nahtloses Erlebnis für Spieler zu gewährleisten, die Star Citizen in ihrer bevorzugten Sprache genießen möchten.
 
 ### Funktionen
