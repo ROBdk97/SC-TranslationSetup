@@ -192,7 +192,7 @@ string SelectLanguage(string[] languages)
 void CleanUp(string scPath)
 {
     // ask if user wants to delete the english files
-    Console.WriteLine($"{l.confirmEnglishTranslation}\n");
+    Console.Write($"\n{l.confirmEnglishTranslation}: ");
     string response = Console.ReadLine();
     if (!response.Equals("y", StringComparison.OrdinalIgnoreCase))
     {
@@ -200,6 +200,10 @@ void CleanUp(string scPath)
     }
     // delete all files in data/Localization
     string fileName = Path.Combine(scPath, "data", "Localization");
+    if(!Directory.Exists(fileName))
+    {
+        Directory.CreateDirectory(fileName);
+    }
     string[] subfolders = Directory.GetDirectories(fileName);
     foreach (var subfolder in subfolders)
     {
@@ -221,7 +225,7 @@ void CleanUp(string scPath)
         return false; // Keep the line
     });
     File.WriteAllLines(userCfgPath, userCfgContent);
-    Console.WriteLine($"{l.cleanupDone}\n");
+    Console.WriteLine($"\n{l.cleanupDone}\n");
     Console.WriteLine($"{l.restartToApply}\n");
 }
 

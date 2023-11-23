@@ -45,7 +45,7 @@
       "invalidSelection": "Sélection invalide.",
       "selectLanguage": "Veuillez sélectionner la langue à traduire :",
       "enterLanguage": "Langue : ",
-      "confirmEnglishTranslation": "Voulez-vous revenir à la traduction anglaise et supprimer les fichiers de traduction ? (o/n)",
+      "confirmEnglishTranslation": "Voulez-vous revenir à la traduction anglaise et supprimer les fichiers de traduction ? (y/n)",
       "cleanupDone": "Nettoyage terminé !",
       "fileDownloaded": "Fichier téléchargé avec succès comme ",
       "errorMessage": "Erreur survenue : "
@@ -70,7 +70,7 @@
       "invalidSelection": "Ungültige Auswahl.",
       "selectLanguage": "Bitte wählen Sie die zu übersetzende Sprache aus:",
       "enterLanguage": "Sprache: ",
-      "confirmEnglishTranslation": "Möchten Sie zur englischen Übersetzung zurückkehren und die Übersetzungsdateien löschen? (j/n)",
+      "confirmEnglishTranslation": "Möchten Sie zur englischen Übersetzung zurückkehren und die Übersetzungsdateien löschen? (y/n)",
       "cleanupDone": "Aufräumen abgeschlossen!",
       "fileDownloaded": "Datei erfolgreich heruntergeladen zu ",
       "errorMessage": "Fehler aufgetreten: "
@@ -95,7 +95,7 @@
       "invalidSelection": "Selección inválida.",
       "selectLanguage": "Por favor, seleccione el idioma que desea traducir:",
       "enterLanguage": "Idioma: ",
-      "confirmEnglishTranslation": "¿Desea volver a la traducción en inglés y eliminar los archivos de traducción? (s/n)",
+      "confirmEnglishTranslation": "¿Desea volver a la traducción en inglés y eliminar los archivos de traducción? (y/n)",
       "cleanupDone": "¡Limpieza completada!",
       "fileDownloaded": "Archivo descargado con éxito como ",
       "errorMessage": "Error ocurrido: "
@@ -120,7 +120,7 @@
       "invalidSelection": "Seleção inválida.",
       "selectLanguage": "Por favor, selecione o idioma que deseja traduzir:",
       "enterLanguage": "Idioma: ",
-      "confirmEnglishTranslation": "Você deseja voltar para a tradução em inglês e deletar os arquivos de tradução? (s/n)",
+      "confirmEnglishTranslation": "Você deseja voltar para a tradução em inglês e deletar os arquivos de tradução? (y/n)",
       "cleanupDone": "Limpeza concluída!",
       "fileDownloaded": "Arquivo baixado com sucesso como ",
       "errorMessage": "Erro ocorrido: "
@@ -145,7 +145,7 @@
       "invalidSelection": "Selezione non valida.",
       "selectLanguage": "Seleziona la lingua da tradurre:",
       "enterLanguage": "Lingua: ",
-      "confirmEnglishTranslation": "Vuoi tornare alla traduzione in inglese e cancellare i file di traduzione? (s/n)",
+      "confirmEnglishTranslation": "Vuoi tornare alla traduzione in inglese e cancellare i file di traduzione? (y/n)",
       "cleanupDone": "Pulizia completata!",
       "fileDownloaded": "File scaricato con successo come ",
       "errorMessage": "Errore: "
