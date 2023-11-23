@@ -1,0 +1,38 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+	<PropertyGroup>
+		<OutputType>Exe</OutputType>
+		<TargetFramework>net8.0-windows</TargetFramework>
+		<RootNamespace>SC_TranslationSetup</RootNamespace>
+		<ImplicitUsings>enable</ImplicitUsings>
+		<Nullable>enable</Nullable>
+		<PublishAot>true</PublishAot>
+		<ApplicationIcon>ROB.ico</ApplicationIcon>
+		<Platforms>AnyCPU;x64</Platforms>
+	</PropertyGroup>
+
+	<ItemGroup>
+		<None Remove="Localisation.json" />
+	</ItemGroup>
+
+	<ItemGroup>
+		<Content Include="ROB.ico" />
+	</ItemGroup>
+	
+	<ItemGroup>
+		<EmbeddedResource Include="Localisation.json" />
+	</ItemGroup>
+
+	<PropertyGroup>
+		<StripSymbols>true</StripSymbols>
+		<PlatformTarget>x64</PlatformTarget>
+	</PropertyGroup>
+	
+	<ItemGroup>
+		<JsonSerializable Include="SC_TranslationSetup.RootObject" />
+		<JsonSerializable Include="SC_TranslationSetup.Lang" />
+		<JsonSerializable Include="System.Collections.Generic.Dictionary" />
+	</ItemGroup>
+
+
+</Project>
