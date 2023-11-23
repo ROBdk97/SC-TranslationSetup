@@ -23,7 +23,7 @@ jobs:
     - name: Install Package
       run: sudo apt-get install clang zlib1g-dev
     - name: Restore dependencies
-      run: dotnet restore .\SC-TranslationSetup\SC-TranslationSetup.csproj
+      run: dotnet restore
     - name: Publish
       run: dotnet publish -r win-x64 -c Release --no-restore .\SC-TranslationSetup\SC-TranslationSetup.csproj
 
