@@ -25,12 +25,12 @@ jobs:
     - name: Restore dependencies
       run: dotnet restore
     - name: Publish
-      run: dotnet publish -r win-x64 -c Release --no-restore /home/runner/work/SC-TranslationSetup/SC-TranslationSetup/SC-TranslationSetup.sln
+      run: dotnet publish -r win-x64 -c Release --no-restore /home/runner/work/SC-TranslationSetup/SC-TranslationSetup/SC-TranslationSetup.csproj
 
     - name: Upload a Build Artifact
       uses: actions/upload-artifact@v3.1.3
       with:
         # Artifact name
         name: Release
-        path: /home/runner/work/SC-TranslationSetup/SC-TranslationSetup/bin/Release/net8.0-windows/win-x64/publish/*.exe
+        path: /home/runner/work/SC-TranslationSetup/SC-TranslationSetup/bin/Release/net8.0-windows/win-x64/publish/SC-TranslationSetup.exe
           
