@@ -32,7 +32,7 @@ jobs:
         path: publish/SC-TranslationSetup.exe
 
     - name: Release
-          uses: softprops/action-gh-release@v1
-          with:
-            files: |
-            ./publish/SC-TranslationSetup.exe
+      uses: softprops/action-gh-release@v1
+      with:
+        files: |
+          ./publish/SC-TranslationSetup.exe
