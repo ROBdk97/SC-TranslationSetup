@@ -21,6 +21,7 @@
       "selectLanguage": "Please select the language you want to translate:",
       "enterLanguage": "Language: ",
       "confirmEnglishTranslation": "Do you want to go back to English translation and delete Translation files? (y/n)",
+      "uninstall": "Uninstall Translation",
       "cleanupDone": "Cleanup done!",
       "fileDownloaded": "File downloaded successfully to ",
       "errorMessage": "Error occurred: "
@@ -46,6 +47,7 @@
       "selectLanguage": "Veuillez sélectionner la langue à traduire :",
       "enterLanguage": "Langue : ",
       "confirmEnglishTranslation": "Voulez-vous revenir à la traduction anglaise et supprimer les fichiers de traduction ? (y/n)",
+      "uninstall": "Désinstallation de la traduction",
       "cleanupDone": "Nettoyage terminé !",
       "fileDownloaded": "Fichier téléchargé avec succès comme ",
       "errorMessage": "Erreur survenue : "
@@ -71,6 +73,7 @@
       "selectLanguage": "Bitte wählen Sie die zu übersetzende Sprache aus:",
       "enterLanguage": "Sprache: ",
       "confirmEnglishTranslation": "Möchten Sie zur englischen Übersetzung zurückkehren und die Übersetzungsdateien löschen? (y/n)",
+      "uninstall": "Deinstallation der Übersetzung",
       "cleanupDone": "Aufräumen abgeschlossen!",
       "fileDownloaded": "Datei erfolgreich heruntergeladen zu ",
       "errorMessage": "Fehler aufgetreten: "
@@ -96,6 +99,7 @@
       "selectLanguage": "Por favor, seleccione el idioma que desea traducir:",
       "enterLanguage": "Idioma: ",
       "confirmEnglishTranslation": "¿Desea volver a la traducción en inglés y eliminar los archivos de traducción? (y/n)",
+      "uninstall": "Desinstalación de la traducción",
       "cleanupDone": "¡Limpieza completada!",
       "fileDownloaded": "Archivo descargado con éxito como ",
       "errorMessage": "Error ocurrido: "
@@ -121,6 +125,7 @@
       "selectLanguage": "Por favor, selecione o idioma que deseja traduzir:",
       "enterLanguage": "Idioma: ",
       "confirmEnglishTranslation": "Você deseja voltar para a tradução em inglês e deletar os arquivos de tradução? (y/n)",
+      "uninstall": "Desinstalação da Tradução",
       "cleanupDone": "Limpeza concluída!",
       "fileDownloaded": "Arquivo baixado com sucesso como ",
       "errorMessage": "Erro ocorrido: "
@@ -146,6 +151,7 @@
       "selectLanguage": "Seleziona la lingua da tradurre:",
       "enterLanguage": "Lingua: ",
       "confirmEnglishTranslation": "Vuoi tornare alla traduzione in inglese e cancellare i file di traduzione? (y/n)",
+      "uninstall": "Disinstallazione della traduzione",
       "cleanupDone": "Pulizia completata!",
       "fileDownloaded": "File scaricato con successo come ",
       "errorMessage": "Errore: "

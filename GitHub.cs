@@ -4,9 +4,13 @@ namespace SC_TranslationSetup
 {
     internal static class GitHub
     {
-        internal static async Task<string[]> GetRepoData()
+        internal static async Task<string[]> GetRepoData(string selectedVersion)
         {
             string branch = "main";
+            if(selectedVersion.Contains("PTU"))
+            {
+                branch = "ptu";
+            }
             string path = "data/Localization";
             string repoOwner = "Dymerz";
             string repoName = "StarCitizen-Localization";
@@ -19,10 +23,9 @@ namespace SC_TranslationSetup
             string url = $"https://api.github.com/repos/{owner}/{repo}/contents/{path}?ref={branch}";
             List<string> languages = [];
 
-            using (HttpClient client = new HttpClient())
+            using(HttpClient client = new())
             {
                 client.DefaultRequestHeaders.Add("User-Agent", "request"); // GitHub API requires a user-agent
-
                 try
                 {
                     HttpResponseMessage response = await client.GetAsync(url);
@@ -32,24 +35,24 @@ namespace SC_TranslationSetup
                     JsonDocument doc = JsonDocument.Parse(content);
                     JsonElement root = doc.RootElement;
 
-                    if (root.ValueKind == JsonValueKind.Array)
+                    if(root.ValueKind == JsonValueKind.Array)
                     {
-                        foreach (JsonElement item in root.EnumerateArray())
+                        foreach(JsonElement item in root.EnumerateArray())
                         {
                             string type = item.GetProperty("type").GetString();
                             string name = item.GetProperty("name").GetString();
 
-                            if (type == "dir")
+                            if(type == "dir")
                             {
                                 languages.Add(name);
                             }
                         }
                     }
-
-                }
-                catch (Exception ex)
+                } catch(Exception ex)
                 {
                     Console.WriteLine($"Error occurred: {ex.Message}");
+                    Console.ReadKey();
+                    Environment.Exit(1);
                 }
             }
             return [.. languages];

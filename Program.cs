@@ -1,11 +1,7 @@
 ﻿using SC_TranslationSetup;
-using System.Diagnostics.CodeAnalysis;
 using System.Globalization;
-using System.Net.Http.Json;
 using System.Reflection;
-using System.Runtime.Intrinsics.X86;
 using System.Text.Json;
-using System.Text.Json.Serialization.Metadata;
 using System.Text.RegularExpressions;
 
 Lang l = GetLang();
@@ -35,6 +31,7 @@ async Task Setup()
             // cleanup scPath to remove additional //
             scPath = scPath.Replace("\\\\", "\\");
             scPath = scPath.Substring(0, scPath.IndexOf("StarCitizen") + 11);
+        // check if path exists and if not, ask for path
         PATHNOTFOUND:
             if (!Directory.Exists(scPath) || (Directory.Exists(scPath) && !scPath.Contains("StarCitizen")))
             {
@@ -46,8 +43,6 @@ async Task Setup()
                 goto PATHNOTFOUND;
             }
         }
-
-
         Console.WriteLine($"{l.starCitizenPath}{scPath}\n");
 
         // Get available versions
@@ -60,7 +55,7 @@ async Task Setup()
 
         // Get available languages
         Console.WriteLine($"{l.gettingLanguages}\n");
-        var languages = await GitHub.GetRepoData();
+        var languages = await GitHub.GetRepoData(selectedVersion);
         string selectedLanguage = SelectLanguage(languages);
         if (string.IsNullOrEmpty(selectedLanguage))
         {
@@ -94,6 +89,8 @@ async Task<Task> ProcessLanguageSelection(string selectedVersion, string selecte
 {
     string filePath = Path.Combine(selectedVersion, "data", "Localization", selectedLanguage, "global.ini");
     string branch = "main";
+    if (selectedVersion.Contains("PTU"))
+        branch = "ptu";
     Directory.CreateDirectory(Path.GetDirectoryName(filePath));
     await DownloadFileAsync(branch, selectedLanguage, filePath);
     EditUserConfig(selectedVersion, selectedLanguage);
@@ -110,18 +107,19 @@ void EditUserConfig(string selectedVersion, string selectedLanguage)
     var userCfgContent = File.ReadAllLines(filePath).ToList();
 
     // Remove lines and check if settings exist
-    userCfgContent.RemoveAll(line =>
-    {
-        if (line.Contains("g_language"))
+    userCfgContent.RemoveAll(
+        line =>
         {
-            return true; // Remove the line
-        }
-        if (line.Contains("g_languageAudio"))
-        {
-            return true; // Remove the line
-        }
-        return false; // Keep the line
-    });
+            if (line.Contains("g_language"))
+            {
+                return true; // Remove the line
+            }
+            if (line.Contains("g_languageAudio"))
+            {
+                return true; // Remove the line
+            }
+            return false; // Keep the line
+        });
 
     // Add missing settings
     userCfgContent.Add($"g_language = {selectedLanguage}");
@@ -148,6 +146,7 @@ string SelectStarCitizenVersion(string latestPath)
 {
     string[] subfolders = Directory.GetDirectories(latestPath);
 
+    SELECTVERSION:
     Console.WriteLine($"{l.selectVersion}");
     for (int i = 0; i < subfolders.Length; i++)
     {
@@ -155,13 +154,17 @@ string SelectStarCitizenVersion(string latestPath)
     }
     Console.Write($"\n{l.enterVersion}");
 
-    if (int.TryParse(Console.ReadLine(), out int selectedVersion) && selectedVersion >= 0 && selectedVersion < subfolders.Length)
+    if (int.TryParse(Console.ReadLine(), out int selectedVersion) &&
+        selectedVersion >= 0 &&
+        selectedVersion < subfolders.Length)
     {
         return subfolders[selectedVersion];
     }
 
+    if (selectedVersion == -1)
+        Environment.Exit(0);
     Console.WriteLine($"{l.invalidSelection}\n");
-    return "";
+    goto SELECTVERSION;
 }
 
 /// <summary>
@@ -169,21 +172,31 @@ string SelectStarCitizenVersion(string latestPath)
 /// </summary>
 string SelectLanguage(string[] languages)
 {
+    SELECTLANGUAGE:
     Console.WriteLine($"{l.selectLanguage}");
     for (int i = 0; i < languages.Length; i++)
     {
+        if (languages[i] == "english")
+        {
+            Console.WriteLine($"{i,00} - {languages[i]} / {l.uninstall}");
+            continue;
+        }
         Console.WriteLine($"{i,00} - {languages[i]}");
     }
 
     Console.Write($"\n{l.enterLanguage}");
 
-    if (int.TryParse(Console.ReadLine(), out int selectedLanguage) && selectedLanguage >= 0 && selectedLanguage < languages.Length)
+    if (int.TryParse(Console.ReadLine(), out int selectedLanguage) &&
+        selectedLanguage >= 0 &&
+        selectedLanguage < languages.Length)
     {
         return languages[selectedLanguage];
     }
 
+    if(selectedLanguage == -1)
+        Environment.Exit(0);
     Console.WriteLine($"{l.invalidSelection}\n");
-    return null;
+    goto SELECTLANGUAGE;
 }
 
 /// <summary>
@@ -200,7 +213,7 @@ void CleanUp(string scPath)
     }
     // delete all files in data/Localization
     string fileName = Path.Combine(scPath, "data", "Localization");
-    if(!Directory.Exists(fileName))
+    if (!Directory.Exists(fileName))
     {
         Directory.CreateDirectory(fileName);
     }
@@ -212,18 +225,19 @@ void CleanUp(string scPath)
     string userCfgPath = Path.Combine(scPath, "user.cfg");
     var userCfgContent = File.ReadAllLines(userCfgPath).ToList();
     // remove user.cfg entry g_language and g_languageAudio
-    userCfgContent.RemoveAll(line =>
-    {
-        if (line.Contains("g_language"))
+    userCfgContent.RemoveAll(
+        line =>
         {
-            return true; // Remove the line
-        }
-        if (line.Contains("g_languageAudio"))
-        {
-            return true; // Remove the line
-        }
-        return false; // Keep the line
-    });
+            if (line.Contains("g_language"))
+            {
+                return true; // Remove the line
+            }
+            if (line.Contains("g_languageAudio"))
+            {
+                return true; // Remove the line
+            }
+            return false; // Keep the line
+        });
     File.WriteAllLines(userCfgPath, userCfgContent);
     Console.WriteLine($"\n{l.cleanupDone}\n");
     Console.WriteLine($"{l.restartToApply}\n");
@@ -241,7 +255,9 @@ string FindLatestStarCitizenPath(string logFilePath)
     foreach (var line in lines)
     {
         var timestampMatch = Regex.Match(line, "{ \"t\":\"([^\"]+)\"");
-        var pathMatch = Regex.Match(line, "\"filePaths\":\\s*\\[\\s*\"([^\"]+)\"\\s*\\]|Launching Star Citizen LIVE from \\(([^)]+)\\)|Deleting (C:\\\\[^ ]+)");
+        var pathMatch = Regex.Match(
+            line,
+            "\"filePaths\":\\s*\\[\\s*\"([^\"]+)\"\\s*\\]|Launching Star Citizen LIVE from \\(([^)]+)\\)|Deleting (C:\\\\[^ ]+)");
 
         if (timestampMatch.Success && pathMatch.Success)
         {
@@ -249,7 +265,9 @@ string FindLatestStarCitizenPath(string logFilePath)
             if (timestamp > latestTimestamp)
             {
                 latestTimestamp = timestamp;
-                latestPath = pathMatch.Groups[1].Success ? pathMatch.Groups[1].Value : pathMatch.Groups[2].Success ? pathMatch.Groups[2].Value : pathMatch.Groups[3].Value;
+                latestPath = pathMatch.Groups[1].Success
+                    ? pathMatch.Groups[1].Value
+                    : pathMatch.Groups[2].Success ? pathMatch.Groups[2].Value : pathMatch.Groups[3].Value;
             }
         }
     }
@@ -295,7 +313,6 @@ Lang GetLang()
         {
             string result = reader.ReadToEnd();
             root = JsonSerializer.Deserialize(result, SourceGenerationContext.Default.RootObject);
-
         }
         string languageCode = CultureInfo.InstalledUICulture.TwoLetterISOLanguageName;
         return root.languages[languageCode];

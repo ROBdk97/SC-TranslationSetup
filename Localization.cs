@@ -3,7 +3,7 @@ using System.Text.Json.Serialization;
 
 namespace SC_TranslationSetup
 {
-    [JsonSerializable(typeof(RootObject))]
+    //[JsonSerializable(typeof(RootObject))]
     public class RootObject
     {
         public RootObject()
@@ -13,7 +13,7 @@ namespace SC_TranslationSetup
         public Dictionary<string, Lang> languages { get; set; }
     }
 
-    [JsonSerializable(typeof(Lang))]
+    //[JsonSerializable(typeof(Lang))]
     public class Lang
     {
         public Lang()
@@ -40,6 +40,7 @@ namespace SC_TranslationSetup
         public string? selectLanguage { get; set; }
         public string? enterLanguage { get; set; }
         public string? confirmEnglishTranslation { get; set; }
+        public string? uninstall { get; set; }
         public string? cleanupDone { get; set; }
         public string? fileDownloaded { get; set; }
         public string? errorMessage { get; set; }

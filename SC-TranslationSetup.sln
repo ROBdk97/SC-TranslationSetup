@@ -1,9 +1,9 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
-VisualStudioVersion = 17.8.34112.27
+VisualStudioVersion = 17.9.34310.174
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SC-TranslationSetup", "SC-TranslationSetup.csproj", "{04E9FB99-B400-49B7-9BE4-49DB188DFE0F}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SC-TranslationSetup", "SC-TranslationSetup.csproj", "{4CE9027F-DD3E-4D59-AEE9-1D252F45ADE9}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -13,15 +13,19 @@ Global
 		Release|x64 = Release|x64
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{04E9FB99-B400-49B7-9BE4-49DB188DFE0F}.Debug|Any CPU.ActiveCfg = Debug|win-x64
-		{04E9FB99-B400-49B7-9BE4-49DB188DFE0F}.Debug|x64.ActiveCfg = Debug|x64
-		{04E9FB99-B400-49B7-9BE4-49DB188DFE0F}.Release|Any CPU.ActiveCfg = Release|win-x64
-		{04E9FB99-B400-49B7-9BE4-49DB188DFE0F}.Release|x64.ActiveCfg = Release|win-x64
+		{4CE9027F-DD3E-4D59-AEE9-1D252F45ADE9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4CE9027F-DD3E-4D59-AEE9-1D252F45ADE9}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4CE9027F-DD3E-4D59-AEE9-1D252F45ADE9}.Debug|x64.ActiveCfg = Debug|x64
+		{4CE9027F-DD3E-4D59-AEE9-1D252F45ADE9}.Debug|x64.Build.0 = Debug|x64
+		{4CE9027F-DD3E-4D59-AEE9-1D252F45ADE9}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4CE9027F-DD3E-4D59-AEE9-1D252F45ADE9}.Release|Any CPU.Build.0 = Release|Any CPU
+		{4CE9027F-DD3E-4D59-AEE9-1D252F45ADE9}.Release|x64.ActiveCfg = Release|x64
+		{4CE9027F-DD3E-4D59-AEE9-1D252F45ADE9}.Release|x64.Build.0 = Release|x64
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
-		SolutionGuid = {3A23E57A-1B86-4B10-85B4-AB563BAB47C7}
+		SolutionGuid = {8DD1F6E3-1B67-4E5D-8703-B95AE965DA3B}
 	EndGlobalSection
 EndGlobal
