@@ -100,7 +100,7 @@
       "fileDownloaded": "Archivo descargado con éxito como ",
       "errorMessage": "Error ocurrido: "
     },
-    "pt-BR": {
+    "pt": {
       "translationSetup": "Configuração de Tradução do Star Citizen",
       "exitPrompt": "Pressione qualquer tecla para sair...",
       "lookingForLogFile": "Procurando arquivo de log do RSI Launcher...",
