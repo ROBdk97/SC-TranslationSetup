@@ -44,7 +44,7 @@ Contributions are always welcome! Please refer to the [StarCitizen-Localization]
 
 ### License
 
-See the LICENSE file for details.
+See the [LICENSE](LICENSE.txt) for details.
 
 ---
 
