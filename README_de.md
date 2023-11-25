@@ -10,6 +10,9 @@
 
 Willkommen im `SC-TranslationSetup`-Repository, dem bevorzugten Einrichtungstool für die Lokalisierung von Star Citizen unter Verwendung der Übersetzungen aus dem [StarCitizen-Localization](https://github.com/Dymerz/StarCitizen-Localization)-Repository. Dieses Tool wurde entwickelt, um die Installation von Lokalisierungsdateien zu vereinfachen und ein nahtloses Erlebnis für Spieler zu gewährleisten, die Star Citizen in ihrer bevorzugten Sprache genießen möchten.
 
+# Beispiel auf Deutsch
+![Beispiel auf Deutsch](SC-TranslationSetup.png)
+
 ### Funktionen
 
 - **Einfache Installation:** Vereinfacht den Prozess der Installation von Lokalisierungsdateien in Star Citizen.
