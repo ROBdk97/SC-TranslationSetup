@@ -10,11 +10,14 @@
 
 Welcome to the `SC-TranslationSetup` repository, the go-to setup tool for localizing Star Citizen using the translations from the [StarCitizen-Localization](https://github.com/Dymerz/StarCitizen-Localization) repository. This tool is designed to simplify the installation of localization files, ensuring a seamless experience for players looking to enjoy Star Citizen in their preferred language.
 
+# Example in German
+![Example in German](SC-TranslationSetup.png)
+
 ### Features
 
 - **Easy Installation:** Streamlines the process of installing localization files into Star Citizen.
 - **Automatically finds Star Citizen Installation:** Tries to find the Star Citizen Installation and asks you the Version (LIVE/PTU,..) you want to install.
-- **Multi-Language Support:** Compatible with all languages provided in the StarCitizen-Localization repo.
+- **Multi-Language Support:** Compatible with all languages provided in the StarCitizen-Localization repo for download and in the application.
 - **User-Friendly Interface:** Intuitive design for hassle-free operation.
 - **Automatic Updates:** Automatically fetches the latest translations from the StarCitizen-Localization repository on each run.
 
