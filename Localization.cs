@@ -1,9 +1,12 @@
 ﻿
+using System.Globalization;
+using System.Reflection;
+using System.Text.Json;
 using System.Text.Json.Serialization;
 
 namespace SC_TranslationSetup
 {
-    //[JsonSerializable(typeof(RootObject))]
+    [JsonSerializable(typeof(RootObject))]
     public class RootObject
     {
         public RootObject()
@@ -13,7 +16,7 @@ namespace SC_TranslationSetup
         public Dictionary<string, Lang> languages { get; set; }
     }
 
-    //[JsonSerializable(typeof(Lang))]
+    [JsonSerializable(typeof(Lang))]
     public class Lang
     {
         public Lang()
@@ -50,5 +53,34 @@ namespace SC_TranslationSetup
     [JsonSerializable(typeof(RootObject))]
     internal partial class SourceGenerationContext : JsonSerializerContext
     {
+    }
+
+    internal class Localization
+    {
+        /// <summary>
+        /// Get the language file from the assembly resources
+        /// </summary>
+        internal static Lang GetLang()
+        {
+            RootObject root = null;
+            try
+            {
+                var assembly = Assembly.GetExecutingAssembly();
+                using (Stream stream = assembly.GetManifestResourceStream("SC_TranslationSetup.Localisation.json"))
+                using (StreamReader reader = new StreamReader(stream))
+                {
+                    string result = reader.ReadToEnd();
+                    root = JsonSerializer.Deserialize(result, SourceGenerationContext.Default.RootObject);
+                }
+                string languageCode = CultureInfo.InstalledUICulture.TwoLetterISOLanguageName;
+                return root.languages[languageCode];
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine($"Error getting language file: {ex.Message}");
+                Console.ReadKey();
+                return root.languages["en"];
+            }
+        }
     }
 }

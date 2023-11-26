@@ -3,7 +3,12 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.9.34310.174
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SC-TranslationSetup", "SC-TranslationSetup.csproj", "{4CE9027F-DD3E-4D59-AEE9-1D252F45ADE9}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SC-TranslationSetup", "SC-TranslationSetup.csproj", "{4CE9027F-DD3E-4D59-AEE9-1D252F45ADE9}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{6BA0AD0C-A0AF-4E72-A1A1-F807CD3894CB}"
+	ProjectSection(SolutionItems) = preProject
+		.editorconfig = .editorconfig
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
