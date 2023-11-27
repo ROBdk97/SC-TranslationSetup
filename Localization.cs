@@ -6,7 +6,6 @@ using System.Text.Json.Serialization;
 
 namespace SC_TranslationSetup
 {
-    [JsonSerializable(typeof(RootObject))]
     public class RootObject
     {
         public RootObject()
@@ -16,7 +15,6 @@ namespace SC_TranslationSetup
         public Dictionary<string, Lang> languages { get; set; }
     }
 
-    [JsonSerializable(typeof(Lang))]
     public class Lang
     {
         public Lang()
