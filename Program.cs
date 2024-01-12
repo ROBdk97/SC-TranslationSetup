@@ -42,7 +42,10 @@ internal class Program
                     Console.WriteLine($"\n{l.directoryNotFound}\n");
                     Console.Write($"\n{l.enterPath}");
                     scPath = Console.ReadLine();
-                    scPath = scPath.Substring(0, scPath.IndexOf("StarCitizen") + 11);
+                    if (string.IsNullOrWhiteSpace(scPath))
+                        goto PATHNOTFOUND;
+                    if (scPath.Contains("StarCitizen"))
+                        scPath = scPath[..(scPath.IndexOf("StarCitizen") + 11)];
                     goto PATHNOTFOUND;
                 }
             }
