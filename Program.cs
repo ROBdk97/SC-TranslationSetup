@@ -19,10 +19,10 @@ internal class Program
     /// </summary>
     static async Task Setup()
     {
-        string scPath = "C:\\Program Files\\Roberts Space Industries\\StarCitizen\\LIVE";
+        string scPath = "C:\\Program Files\\Roberts Space Industries\\StarCitizen";
         try
         {
-            if (!File.Exists(scPath))
+            if (!Directory.Exists(scPath))
             {
                 // Find latest Star Citizen path from RSI Launcher log file
                 Console.WriteLine($"{l.lookingForLogFile}\n");
