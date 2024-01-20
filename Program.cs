@@ -19,7 +19,7 @@ internal class Program
     /// </summary>
     static async Task Setup()
     {
-        string scPath = "C:\\Program Files\\Roberts Space Industries\\StarCitizen\\";
+        string scPath = "C:\\Program Files\\Roberts Space Industries\\StarCitizen\\LIVE";
         try
         {
             if (!File.Exists(scPath))
