@@ -109,6 +109,10 @@ internal class Program
     {
         // Read user.cfg
         string filePath = Path.Combine(selectedVersion, "user.cfg");
+        if(!File.Exists(filePath))
+        {
+            File.Create(filePath);
+        }
         var userCfgContent = File.ReadAllLines(filePath).ToList();
 
         // Remove lines and check if settings exist
