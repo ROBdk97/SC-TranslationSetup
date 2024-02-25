@@ -1,58 +1,58 @@
 ## Herramienta SC-TranslationSetup
 ![GitHub todas las descargas](https://img.shields.io/github/downloads/ROBdk97/SC-TranslationSetup/total)
 
-- 馃嚞馃嚙 [Instructions in English.](README.md).
-- 馃嚝馃嚪 [Instruction en Fran莽ais](README_fr.md).
-- 馃嚛馃嚜 [Anleitung auf Deutsch](README_de.md).
-- 馃嚜馃嚫 [Instrucciones en Espa帽ol](README_es.md).
-- 馃嚠馃嚬 [Istruzioni in Italiano](README_it.md).
-- 馃嚙馃嚪 [Instru莽茫o em Portugu锚s](README_ptbr.md).
+- ???? [Instructions in English.](README.md).
+- ???? [Instruction en Fran?ais](README_fr.md).
+- ???? [Anleitung auf Deutsch](README_de.md).
+- ???? [Instrucciones en Espa?ol](README_es.md).
+- ???? [Istruzioni in Italiano](README_it.md).
+- ???? [Instru??o em Português](README_ptbr.md).
 
-Bienvenido al repositorio `SC-TranslationSetup`, la herramienta de configuraci贸n ideal para localizar Star Citizen utilizando las traducciones del repositorio [StarCitizen-Localization](https://github.com/Dymerz/StarCitizen-Localization). Esta herramienta est谩 dise帽ada para simplificar la instalaci贸n de archivos de localizaci贸n, asegurando una experiencia fluida para los jugadores que deseen disfrutar de Star Citizen en su idioma preferido.
+Bienvenido al repositorio `SC-TranslationSetup`, la herramienta de configuración ideal para localizar Star Citizen utilizando las traducciones del repositorio [StarCitizen-Localization](https://github.com/Dymerz/StarCitizen-Localization). Esta herramienta está dise?ada para simplificar la instalación de archivos de localización, asegurando una experiencia fluida para los jugadores que buscan disfrutar de Star Citizen en su idioma preferido.
 
-# Ejemplo en alemán
-![Ejemplo en alemán](SC-TranslationSetup.png)
+# Ejemplo en Alemán
+![Ejemplo en Alemán](SC-TranslationSetup.png)
 
-### Caracter铆sticas
+### Características
 
-- **Instalaci贸n f谩cil:** Simplifica el proceso de instalar archivos de localizaci贸n en Star Citizen.
-- **Encuentra autom谩ticamente la instalaci贸n de Star Citizen:** Intenta encontrar la instalaci贸n de Star Citizen y te pregunta la versi贸n (LIVE/PTU, etc.) que deseas instalar.
-- **Soporte multilenguaje:** Compatible con todos los idiomas proporcionados en el repositorio StarCitizen-Localization.
-- **Interfaz amigable para el usuario:** Dise帽o intuitivo para una operaci贸n sin complicaciones.
-- **Actualizaciones autom谩ticas:** Obtiene autom谩ticamente las 煤ltimas traducciones del repositorio StarCitizen-Localization en cada ejecuci贸n.
+- **Instalación Fácil:** Simplifica el proceso de instalar archivos de localización en Star Citizen.
+- **Encuentra automáticamente la instalación de Star Citizen:** Intenta encontrar la instalación de Star Citizen y te pregunta la versión (LIVE/PTU, etc.) que deseas instalar.
+- **Soporte Multilenguaje:** Compatible con todos los idiomas proporcionados en el repo de StarCitizen-Localization para descargar y en la aplicación.
+- **Interfaz Amigable al Usuario:** Dise?o intuitivo para una operación sin complicaciones.
+- **Actualizaciones Automáticas:** Busca automáticamente las últimas traducciones del repositorio StarCitizen-Localization en cada ejecución.
 
 ### Descarga
 
-Obt茅n la 煤ltima versi贸n de la Herramienta SC-TranslationSetup:
+Obtén la última versión de la Herramienta SC-TranslationSetup:
 
-馃敆 [Descargar SC-TranslationSetup.exe](https://github.com/ROBdk97/SC-TranslationSetup/releases/latest/download/SC-TranslationSetup.exe)
+?? [Descargar SC-TranslationSetup.exe](https://github.com/ROBdk97/SC-TranslationSetup/releases/latest/download/SC-TranslationSetup.exe)
 
-### Instalaci贸n
+### Instalación
 
-1. **Descarga la herramienta:** Haz clic en el enlace de arriba para descargar `SC-TranslationSetup.exe`.
-2. **Ejecuta el archivo:** Haz doble clic en el archivo descargado para iniciar el asistente de instalaci贸n.
+1. **Descargar la Herramienta:** Haz clic en el enlace de arriba para descargar `SC-TranslationSetup.exe`.
+2. **Ejecutar el Ejecutable:** Haz doble clic en el archivo descargado para lanzar el asistente de instalación.
 
 ### Uso
 
-- **Inicia la herramienta:** Abre `SC-TranslationSetup.exe`.
+- **Lanzar la Herramienta:** Abre `SC-TranslationSetup.exe`.
 - **Sigue las instrucciones**
 
 ### Soporte
 
-Para cualquier problema o pregunta, por favor abre un problema en este repositorio o cont谩ctanos a trav茅s del repositorio [StarCitizen-Localization](https://github.com/Dymerz/StarCitizen-Localization).
+Para cualquier problema o pregunta, por favor abre un problema en este repositorio o contáctanos a través del repositorio [StarCitizen-Localization](https://github.com/Dymerz/StarCitizen-Localization).
 
 ### Contribuir
 
-隆Las contribuciones son siempre bienvenidas! Por favor, consulta el repositorio [StarCitizen-Localization](https://github.com/Dymerz/StarCitizen-Localization) para obtener directrices sobre c贸mo contribuir a los archivos de traducci贸n.
+?Las contribuciones son siempre bienvenidas! Por favor, consulta el repositorio [StarCitizen-Localization](https://github.com/Dymerz/StarCitizen-Localization) para obtener directrices sobre cómo contribuir a los archivos de traducción.
 
 ### Licencia
 
-Consulta el archivo LICENSE para obtener m谩s detalles.
+Consulta el [LICENSE](LICENSE.txt) para más detalles.
 
 ---
 
-隆Disfruta jugando Star Citizen en tu idioma! 馃殌馃寣
+?Disfruta jugando Star Citizen en tu idioma! ????
 
 ---
-## Aviso legal
-Este es un sitio de fans no oficial de Star Citizen, no afiliado al grupo de empresas Cloud Imperium. Todo el contenido en este sitio que no ha sido autorizado por su anfitri贸n o usuarios es propiedad de sus respectivos due帽os. Star Citizen庐, Roberts Space Industries庐 y Cloud Imperium庐 son marcas registradas de Cloud Imperium Rights LLC.
+## Descargo de responsabilidad
+Este es un sitio de fans no oficial de Star Citizen, no afiliado con el grupo de empresas Cloud Imperium. Todo el contenido en este sitio que no sea creado por su anfitrión o usuarios es propiedad de sus respectivos due?os. Star Citizen?, Roberts Space Industries? y Cloud Imperium? son marcas registradas de Cloud Imperium Rights LLC
