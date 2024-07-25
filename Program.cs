@@ -107,14 +107,13 @@ internal class Program
     /// </summary>
     static void EditUserConfig(string selectedVersion, string selectedLanguage)
     {
+        List<string> userCfgContent = [];
         // Read user.cfg
         string filePath = Path.Combine(selectedVersion, "user.cfg");
-        if(!File.Exists(filePath))
+        if(File.Exists(filePath))
         {
-            File.Create(filePath);
+            userCfgContent = File.ReadAllLines(filePath).ToList();
         }
-        var userCfgContent = File.ReadAllLines(filePath).ToList();
-
         // Remove lines and check if settings exist
         userCfgContent.RemoveAll(
             line =>
@@ -125,7 +124,6 @@ internal class Program
                     return true; // Remove the line
                 return false; // Keep the line
             });
-
         // Add missing settings
         userCfgContent.Add($"g_language = {selectedLanguage}");
         userCfgContent.Add("g_languageAudio = english");
