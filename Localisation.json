@@ -155,6 +155,32 @@
       "cleanupDone": "Pulizia completata!",
       "fileDownloaded": "File scaricato con successo come ",
       "errorMessage": "Errore: "
+    },
+    "lt": {
+      "translationSetup": "Star Citizen Vertimo Sąranka",
+      "exitPrompt": "Paspauskite bet kurį klavišą norėdami išeiti...",
+      "lookingForLogFile": "Ieškoma RSI paleidimo žurnalo failo...",
+      "directoryNotFound": "Star Citizen katalogas nerastas. Prašome įvesti Star Citizen diegimo kelią.",
+      "enterPath": "Kelias: ",
+      "starCitizenPath": "Star Citizen Kelias: ",
+      "selectedVersion": "Pasirinkta versija: ",
+      "gettingLanguages": "Gaunami galimi kalbų vertimai...",
+      "selectedLanguage": "Pasirinkta kalba: ",
+      "downloadingFiles": "Atsisiunčiami failai...",
+      "done": "Atlikta!",
+      "restartToApply": "Prašome iš naujo paleisti Star Citizen, kad pritaikytumėte pakeitimus.",
+      "errorOccurred": "Įvyko klaida: ",
+      "cfgUpdated": "User.cfg atnaujintas.",
+      "selectVersion": "Prašome pasirinkti Star Citizen versiją, kurią norite versti:",
+      "enterVersion": "Versija: ",
+      "invalidSelection": "Neteisingas pasirinkimas.",
+      "selectLanguage": "Prašome pasirinkti kalbą, į kurią norite versti:",
+      "enterLanguage": "Kalba: ",
+      "confirmEnglishTranslation": "Ar norite grįžti prie anglų kalbos vertimo ir ištrinti vertimo failus? (y/n)",
+      "uninstall": "Pašalinti vertimą",
+      "cleanupDone": "Išvalymas atliktas!",
+      "fileDownloaded": "Failas sėkmingai atsisiųstas į ",
+      "errorMessage": "Įvyko klaida: "
     }
   }
 }
