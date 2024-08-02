@@ -91,14 +91,15 @@ internal class Program
     /// Download the global.ini file for the selected language and edit the user.cfg
     static async Task<Task> ProcessLanguageSelection(string selectedVersion, string selectedLanguage)
     {
-        string filePath = Path.Combine(selectedVersion, "data", "Localization", selectedLanguage, "global.ini");
+        string fileLang = Speacial.HandleNotSupported(selectedLanguage);
+        string filePath = Path.Combine(selectedVersion, "data", "Localization", fileLang, "global.ini");
         string branch = "main";
         if (selectedVersion.Contains("PTU"))
             branch = "ptu";
 
         Directory.CreateDirectory(Path.GetDirectoryName(filePath));
         await GitHub.DownloadFileAsync(branch, selectedLanguage, filePath);
-        EditUserConfig(selectedVersion, selectedLanguage);
+        EditUserConfig(selectedVersion, fileLang);
         return Task.CompletedTask;
     }
 
@@ -110,7 +111,7 @@ internal class Program
         List<string> userCfgContent = [];
         // Read user.cfg
         string filePath = Path.Combine(selectedVersion, "user.cfg");
-        if(File.Exists(filePath))
+        if (File.Exists(filePath))
         {
             userCfgContent = File.ReadAllLines(filePath).ToList();
         }
