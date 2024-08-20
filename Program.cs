@@ -274,9 +274,6 @@ internal class Program
         if (string.IsNullOrWhiteSpace(latestPath))
         {
             Console.WriteLine($"RSI Launcher 2.0!");
-            // { "t":"2024-08-20 19:38:31.743", "[browser][info] ": "Launching Star Citizen PTU from (C:\\Games\\StarCitizen\\PTU)"  },
-            // { "t":"2024-08-20 19:39:08.015", "[browser][info] ": "Launching Star Citizen LIVE from (C:\\Games\\StarCitizen\\LIVE)"  },
-            // ....
             foreach (var line in lines)
             {
                 var pathMatch = Regex.Match(line, "Launching Star Citizen (PTU|LIVE) from \\(([^)]+)\\)");
