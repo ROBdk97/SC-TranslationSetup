@@ -29,10 +29,12 @@ internal class Program
                 string logFilePath = GetLogFilePath();
                 if (File.Exists(logFilePath))
                     scPath = FindLatestStarCitizenPath(logFilePath);
+                if (!string.IsNullOrWhiteSpace(scPath)){
 
-                // cleanup scPath to remove additional //
-                scPath = scPath.Replace("\\\\", "\\");
-                scPath = scPath.Substring(0, scPath.IndexOf("StarCitizen") + 11);
+                    // cleanup scPath to remove additional //
+                    scPath = scPath.Replace("\\\\", "\\");
+                    scPath = scPath.Substring(0, scPath.IndexOf("StarCitizen") + 11);
+                }
 
             // check if path exists and if not, ask for path
             PATHNOTFOUND:
@@ -266,6 +268,22 @@ internal class Program
                     latestPath = pathMatch.Groups[1].Success
                         ? pathMatch.Groups[1].Value
                         : pathMatch.Groups[2].Success ? pathMatch.Groups[2].Value : pathMatch.Groups[3].Value;
+                }
+            }
+        }
+        if (string.IsNullOrWhiteSpace(latestPath))
+        {
+            Console.WriteLine($"RSI Launcher 2.0!");
+            // { "t":"2024-08-20 19:38:31.743", "[browser][info] ": "Launching Star Citizen PTU from (C:\\Games\\StarCitizen\\PTU)"  },
+            // { "t":"2024-08-20 19:39:08.015", "[browser][info] ": "Launching Star Citizen LIVE from (C:\\Games\\StarCitizen\\LIVE)"  },
+            // ....
+            foreach (var line in lines)
+            {
+                var pathMatch = Regex.Match(line, "Launching Star Citizen (PTU|LIVE) from \\(([^)]+)\\)");
+                if (pathMatch.Success)
+                {
+                    latestPath = pathMatch.Groups[2].Value;
+                    break;
                 }
             }
         }
