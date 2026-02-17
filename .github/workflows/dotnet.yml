@@ -20,7 +20,7 @@ jobs:
         dotnet-version: '10.0.x'
 
     - name: Restore dependencies
-      run: dotnet restore ./SC-TranslationSetup.csproj
+      run: dotnet restore ./SC-TranslationSetup.csproj -r win-x64 -p:PublishAot=true
 
     - name: Publish
       run: dotnet publish ./SC-TranslationSetup.csproj -r win-x64 -c Release --no-restore -o publish
