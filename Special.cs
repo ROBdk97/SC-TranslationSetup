@@ -1,6 +1,4 @@
-﻿using SC_TranslationSetup;
-
-public static class Speacial
+﻿public static class Special
 {
     /// <summary>
     /// Handle officially not supported languages by replacing the language with the default one (english)
@@ -11,7 +9,8 @@ public static class Speacial
     {
         return selectedLanguage switch
         {
-            "lithuanian_(lithuania)" => "english",
+            "lithuanian_(lithuania)" => "german_(germany)",
+            "turkish_(turkey)" => "german_(germany)",
             _ => selectedLanguage
         };
     }

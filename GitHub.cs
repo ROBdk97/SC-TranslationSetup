@@ -34,10 +34,10 @@ namespace SC_TranslationSetup
                     if (root.ValueKind == JsonValueKind.Array)
                         foreach (JsonElement item in root.EnumerateArray())
                         {
-                            string type = item.GetProperty("type").GetString();
-                            string name = item.GetProperty("name").GetString();
+                            string? type = item.GetProperty("type").GetString();
+                            string? name = item.GetProperty("name").GetString();
 
-                            if (type == "dir")
+                            if (type == "dir" && !string.IsNullOrWhiteSpace(name))
                                 languages.Add(name);
                         }
                 }
@@ -88,7 +88,6 @@ namespace SC_TranslationSetup
             string path = "data/Localization";
             string repoOwner = "Dymerz";
             string repoName = "StarCitizen-Localization";
-
             return await ListRepositoryContents(repoOwner, repoName, branch, path);
         }
     }

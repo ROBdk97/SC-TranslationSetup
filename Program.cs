@@ -29,14 +29,15 @@ internal class Program
                 string logFilePath = GetLogFilePath();
                 if (File.Exists(logFilePath))
                     scPath = FindLatestStarCitizenPath(logFilePath);
-                if (!string.IsNullOrWhiteSpace(scPath)){
+                if (!string.IsNullOrWhiteSpace(scPath))
+                {
 
                     // cleanup scPath to remove additional //
                     scPath = scPath.Replace("\\\\", "\\");
                     scPath = scPath.Substring(0, scPath.IndexOf("StarCitizen") + 11);
                 }
 
-            // check if path exists and if not, ask for path
+                // check if path exists and if not, ask for path
             PATHNOTFOUND:
                 if (!Directory.Exists(scPath) || Directory.Exists(scPath) && !scPath.Contains("StarCitizen"))
                 {
@@ -93,13 +94,15 @@ internal class Program
     /// Download the global.ini file for the selected language and edit the user.cfg
     static async Task<Task> ProcessLanguageSelection(string selectedVersion, string selectedLanguage)
     {
-        string fileLang = Speacial.HandleNotSupported(selectedLanguage);
+        string fileLang = Special.HandleNotSupported(selectedLanguage);
         string filePath = Path.Combine(selectedVersion, "data", "Localization", fileLang, "global.ini");
         string branch = "main";
         if (selectedVersion.Contains("PTU"))
             branch = "ptu";
 
-        Directory.CreateDirectory(Path.GetDirectoryName(filePath));
+        string? directoryPath = Path.GetDirectoryName(filePath);
+        if (!string.IsNullOrWhiteSpace(directoryPath))
+            Directory.CreateDirectory(directoryPath);
         await GitHub.DownloadFileAsync(branch, selectedLanguage, filePath);
         EditUserConfig(selectedVersion, fileLang);
         return Task.CompletedTask;
@@ -209,8 +212,8 @@ internal class Program
     {
         // ask if user wants to delete the english files
         Console.Write($"\n{l.confirmEnglishTranslation}: ");
-        string response = Console.ReadLine();
-        if (!response.Equals("y", StringComparison.OrdinalIgnoreCase))
+        string? response = Console.ReadLine();
+        if (!string.Equals(response, "y", StringComparison.OrdinalIgnoreCase))
             return;
 
         // delete all files in data/Localization
@@ -250,7 +253,7 @@ internal class Program
     {
         string[] lines = File.ReadAllLines(logFilePath);
         DateTime latestTimestamp = DateTime.MinValue;
-        string latestPath = null;
+        string? latestPath = null;
 
         foreach (var line in lines)
         {
@@ -284,6 +287,6 @@ internal class Program
                 }
             }
         }
-        return latestPath;
+        return latestPath ?? string.Empty;
     }
 }

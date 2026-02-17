@@ -12,7 +12,7 @@ namespace SC_TranslationSetup
         {
         }
 
-        public Dictionary<string, Lang> languages { get; set; }
+        public Dictionary<string, Lang>? languages { get; set; }
     }
 
     public class Lang
@@ -60,24 +60,31 @@ namespace SC_TranslationSetup
         /// </summary>
         internal static Lang GetLang()
         {
-            RootObject root = null;
+            RootObject? root = null;
             try
             {
                 var assembly = Assembly.GetExecutingAssembly();
-                using (Stream stream = assembly.GetManifestResourceStream("SC_TranslationSetup.Localisation.json"))
-                using (StreamReader reader = new StreamReader(stream))
-                {
-                    string result = reader.ReadToEnd();
-                    root = JsonSerializer.Deserialize(result, SourceGenerationContext.Default.RootObject);
-                }
+                using Stream? stream = assembly.GetManifestResourceStream("SC_TranslationSetup.Localisation.json");
+                if (stream is null)
+                    throw new InvalidOperationException("Missing localization resource.");
+
+                using StreamReader reader = new StreamReader(stream);
+                string result = reader.ReadToEnd();
+                root = JsonSerializer.Deserialize(result, SourceGenerationContext.Default.RootObject);
                 string languageCode = CultureInfo.InstalledUICulture.TwoLetterISOLanguageName;
-                return root.languages[languageCode];
+                if (root?.languages is not null && root.languages.TryGetValue(languageCode, out var language))
+                    return language;
+
+                if (root?.languages is not null && root.languages.TryGetValue("en", out var fallback))
+                    return fallback;
+
+                return new Lang();
             }
             catch (Exception ex)
             {
                 Console.WriteLine($"Error getting language file: {ex.Message}");
                 Console.ReadKey();
-                return root.languages["en"];
+                return root?.languages?.GetValueOrDefault("en") ?? new Lang();
             }
         }
     }

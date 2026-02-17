@@ -2,7 +2,7 @@
 
 	<PropertyGroup>
 		<OutputType>Exe</OutputType>
-		<TargetFramework>net8.0-windows10.0.19041.0</TargetFramework>
+		<TargetFramework>net10.0-windows10.0.19041.0</TargetFramework>
 		<RootNamespace>SC_TranslationSetup</RootNamespace>
 		<ImplicitUsings>enable</ImplicitUsings>
 		<Nullable>enable</Nullable>
@@ -19,7 +19,7 @@
 	<ItemGroup>
 		<Content Include="ROB.ico" />
 	</ItemGroup>
-	
+
 	<ItemGroup>
 		<EmbeddedResource Include="Localisation.json" />
 	</ItemGroup>
@@ -30,7 +30,7 @@
 		<SignAssembly>False</SignAssembly>
 		<SupportedOSPlatformVersion>7.0</SupportedOSPlatformVersion>
 	</PropertyGroup>
-	
+
 	<ItemGroup>
 		<JsonSerializable Include="SC_TranslationSetup.RootObject" />
 		<JsonSerializable Include="SC_TranslationSetup.Lang" />

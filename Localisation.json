@@ -181,6 +181,32 @@
       "cleanupDone": "Išvalymas atliktas!",
       "fileDownloaded": "Failas sėkmingai atsisiųstas į ",
       "errorMessage": "Įvyko klaida: "
+    },
+    "tr": {
+      "translationSetup": "Star Citizen Çeviri Kurulumu",
+      "exitPrompt": "Çıkmak için herhangi bir tuşa basın...",
+      "lookingForLogFile": "RSI Launcher günlük (log) dosyası aranıyor...",
+      "directoryNotFound": "Star Citizen dizini bulunamadı. Lütfen Star Citizen kurulumunuzun yolunu girin.",
+      "enterPath": "Yol: ",
+      "starCitizenPath": "Star Citizen Yolu: ",
+      "selectedVersion": "Seçilen sürüm: ",
+      "gettingLanguages": "Mevcut diller alınıyor...",
+      "selectedLanguage": "Seçilen dil: ",
+      "downloadingFiles": "Dosyalar indiriliyor...",
+      "done": "Tamamlandı!",
+      "restartToApply": "Değişikliklerin uygulanması için lütfen Star Citizen’i yeniden başlatın.",
+      "errorOccurred": "Bir hata oluştu: ",
+      "cfgUpdated": "User.cfg güncellendi.",
+      "selectVersion": "Lütfen çevirmek istediğiniz Star Citizen sürümünü seçin:",
+      "enterVersion": "Sürüm: ",
+      "invalidSelection": "Geçersiz seçim.",
+      "selectLanguage": "Lütfen çevirmek istediğiniz dili seçin:",
+      "enterLanguage": "Dil: ",
+      "confirmEnglishTranslation": "İngilizce çeviriye geri dönmek ve çeviri dosyalarını silmek istiyor musunuz? (y/n)",
+      "uninstall": "Çeviriyi Kaldır",
+      "cleanupDone": "Temizlik tamamlandı!",
+      "fileDownloaded": "Dosya başarıyla indirildi: ",
+      "errorMessage": "Hata oluştu: "
     }
   }
 }
