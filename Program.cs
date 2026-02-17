@@ -1,13 +1,13 @@
-﻿using SC_TranslationSetup;
-using System.Text.RegularExpressions;
+﻿using SC_TranslationSetup.Helper;
+using SC_TranslationSetup.Models;
 
-internal class Program
+internal partial class Program
 {
     internal static Lang l = Localization.GetLang();
 
     private static async Task Main(string[] args)
     {
-        Console.WriteLine($"{l.translationSetup}\n----------------------------------------\n");
+        Console.WriteLine($"{l.translationSetup}\n----------------------------------------");
         await Setup();
         Console.WriteLine($"{l.exitPrompt}");
         Console.ReadKey();
@@ -22,27 +22,30 @@ internal class Program
         string scPath = "C:\\Program Files\\Roberts Space Industries\\StarCitizen";
         try
         {
+            var (LatestPath, VersionLookup) = SC_TranslationSetup.Helper.SCLaucher.GetLogData();
+            Dictionary<string, string> versionLookup = VersionLookup;
             if (!Directory.Exists(scPath))
             {
-                // Find latest Star Citizen path from RSI Launcher log file
-                Console.WriteLine($"{l.lookingForLogFile}\n");
-                string logFilePath = GetLogFilePath();
-                if (File.Exists(logFilePath))
-                    scPath = FindLatestStarCitizenPath(logFilePath);
+                SC_TranslationSetup.Helper.ConsoleHelper.
+                                // Find latest Star Citizen path from RSI Launcher log file
+                                WriteMutedLine($"{l.lookingForLogFile}");
+                if (!string.IsNullOrWhiteSpace(LatestPath))
+                    scPath = LatestPath;
                 if (!string.IsNullOrWhiteSpace(scPath))
                 {
 
                     // cleanup scPath to remove additional //
                     scPath = scPath.Replace("\\\\", "\\");
-                    scPath = scPath.Substring(0, scPath.IndexOf("StarCitizen") + 11);
+                    scPath = scPath[..(scPath.IndexOf("StarCitizen") + 11)];
                 }
 
                 // check if path exists and if not, ask for path
             PATHNOTFOUND:
                 if (!Directory.Exists(scPath) || Directory.Exists(scPath) && !scPath.Contains("StarCitizen"))
                 {
-                    // Ask for path
-                    Console.WriteLine($"\n{l.directoryNotFound}\n");
+                    SC_TranslationSetup.Helper.ConsoleHelper.
+                                        // Ask for path
+                                        WriteWarningLine($"\n{l.directoryNotFound}\n");
                     Console.Write($"\n{l.enterPath}");
                     scPath = Console.ReadLine();
                     if (string.IsNullOrWhiteSpace(scPath))
@@ -52,23 +55,21 @@ internal class Program
                     goto PATHNOTFOUND;
                 }
             }
-            Console.WriteLine($"{l.starCitizenPath}{scPath}\n");
+
+            SC_TranslationSetup.Helper.ConsoleHelper.WriteMutedLine($"{l.starCitizenPath}{scPath}");
 
             // Get available versions
-            string selectedVersion = SelectStarCitizenVersion(scPath);
+            string selectedVersion = SelectStarCitizenVersion(scPath, versionLookup);
             if (string.IsNullOrEmpty(selectedVersion))
                 return;
+            SC_TranslationSetup.Helper.ConsoleHelper.
 
-            Console.WriteLine($"{l.selectedVersion}{selectedVersion}\n");
-
-            // Get available languages
-            Console.WriteLine($"{l.gettingLanguages}\n");
+                        // Get available languages
+                        WriteMutedLine($"{l.gettingLanguages}");
             var languages = await GitHub.GetRepoData(selectedVersion);
             string selectedLanguage = SelectLanguage(languages);
             if (string.IsNullOrEmpty(selectedLanguage))
                 return;
-
-            Console.WriteLine($"{l.enterLanguage}{selectedLanguage}\n");
 
             // Check if language is english and if so, clean up
             if (selectedLanguage == "english")
@@ -77,12 +78,14 @@ internal class Program
                 return;
             }
 
-            // Download files and edit user.cfg
-            Console.WriteLine($"{l.downloadingFiles}\n");
-            await ProcessLanguageSelection(selectedVersion, selectedLanguage);
+            SC_TranslationSetup.Helper.ConsoleHelper.
 
-            Console.WriteLine($"{l.done}\n");
-            Console.WriteLine($"{l.restartToApply}\n");
+                        // Download files and edit user.cfg
+                        WriteMutedLine($"{l.downloadingFiles}");
+            await ProcessLanguageSelection(selectedVersion, selectedLanguage);
+            SC_TranslationSetup.Helper.ConsoleHelper.
+                        WriteSuccessLine($"\n{l.done}");
+            SC_TranslationSetup.Helper.ConsoleHelper.WriteSuccessLine($"{l.restartToApply}");
         }
         catch (Exception ex)
         {
@@ -118,7 +121,7 @@ internal class Program
         string filePath = Path.Combine(selectedVersion, "user.cfg");
         if (File.Exists(filePath))
         {
-            userCfgContent = File.ReadAllLines(filePath).ToList();
+            userCfgContent = [.. File.ReadAllLines(filePath)];
         }
         // Remove lines and check if settings exist
         userCfgContent.RemoveAll(
@@ -136,42 +139,30 @@ internal class Program
 
         // Write back to file
         File.WriteAllLines(filePath, userCfgContent);
-        Console.WriteLine($"{l.cfgUpdated}\n");
-    }
-
-    /// <summary>
-    /// Get the path to the RSI Launcher log file
-    /// </summary>
-    static string GetLogFilePath()
-    {
-        string appDataPath = Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData);
-        return Path.Combine(appDataPath, "rsilauncher", "logs", "log.log");
+        SC_TranslationSetup.Helper.ConsoleHelper.WriteMutedLine($"{l.cfgUpdated}");
     }
 
     /// <summary>
     /// Select the Star Citizen version to use
     /// </summary>
-    static string SelectStarCitizenVersion(string latestPath)
+    static string SelectStarCitizenVersion(string latestPath, Dictionary<string, string> versionLookup)
     {
         string[] subfolders = Directory.GetDirectories(latestPath);
+        var displayNames = subfolders
+            .Select(folder =>
+            {
+                string versionName = Path.GetFileName(folder);
+                if (versionLookup.TryGetValue(versionName, out var gameVersion) && !string.IsNullOrWhiteSpace(gameVersion))
+                    return $"{versionName} ({gameVersion})";
+                return versionName;
+            })
+            .ToArray();
 
-    SELECTVERSION:
-        Console.WriteLine($"{l.selectVersion}");
-        for (int i = 0; i < subfolders.Length; i++)
-            Console.WriteLine($" {i,00} - {Path.GetFileName(subfolders[i])}");
-
-        Console.Write($"\n{l.enterVersion}");
-
-        if (int.TryParse(Console.ReadLine(), out int selectedVersion) &&
-            selectedVersion >= 0 &&
-            selectedVersion < subfolders.Length)
-            return subfolders[selectedVersion];
-
-        if (selectedVersion == -1)
+        int selectedIndex = SC_TranslationSetup.Helper.ConsoleHelper.SelectFromList(l.selectVersion, displayNames, l.selectedVersion);
+        if (selectedIndex < 0)
             Environment.Exit(0);
 
-        Console.WriteLine($"{l.invalidSelection}\n");
-        goto SELECTVERSION;
+        return subfolders[selectedIndex];
     }
 
     /// <summary>
@@ -179,30 +170,15 @@ internal class Program
     /// </summary>
     static string SelectLanguage(string[] languages)
     {
-    SELECTLANGUAGE:
-        Console.WriteLine($"{l.selectLanguage}");
-        for (int i = 0; i < languages.Length; i++)
-        {
-            if (languages[i] == "english")
-            {
-                Console.WriteLine($"{i,00} - {languages[i]} / {l.uninstall}");
-                continue;
-            }
-            Console.WriteLine($"{i,00} - {languages[i]}");
-        }
+        var displayNames = languages
+            .Select(language => language == "english" ? $"{language} / {l.uninstall}" : language)
+            .ToArray();
 
-        Console.Write($"\n{l.enterLanguage}");
-
-        if (int.TryParse(Console.ReadLine(), out int selectedLanguage) &&
-            selectedLanguage >= 0 &&
-            selectedLanguage < languages.Length)
-            return languages[selectedLanguage];
-
-        if (selectedLanguage == -1)
+        int selectedIndex = SC_TranslationSetup.Helper.ConsoleHelper.SelectFromList(l.selectLanguage, displayNames, l.enterLanguage);
+        if (selectedIndex < 0)
             Environment.Exit(0);
 
-        Console.WriteLine($"{l.invalidSelection}\n");
-        goto SELECTLANGUAGE;
+        return languages[selectedIndex];
     }
 
     /// <summary>
@@ -211,9 +187,9 @@ internal class Program
     static void CleanUp(string scPath)
     {
         // ask if user wants to delete the english files
-        Console.Write($"\n{l.confirmEnglishTranslation}: ");
-        string? response = Console.ReadLine();
-        if (!string.Equals(response, "y", StringComparison.OrdinalIgnoreCase))
+        string[] options = ["Yes", "No"];
+        int selectedIndex = SC_TranslationSetup.Helper.ConsoleHelper.SelectFromList($"{l.confirmEnglishTranslation}", options);
+        if (selectedIndex != 0)
             return;
 
         // delete all files in data/Localization
@@ -242,51 +218,8 @@ internal class Program
                 return false; // Keep the line
             });
         File.WriteAllLines(userCfgPath, userCfgContent);
-        Console.WriteLine($"\n{l.cleanupDone}\n");
-        Console.WriteLine($"{l.restartToApply}\n");
+        SC_TranslationSetup.Helper.ConsoleHelper.WriteSuccessLine($"{l.cleanupDone}");
+        SC_TranslationSetup.Helper.ConsoleHelper.WriteSuccessLine($"{l.restartToApply}");
     }
 
-    /// <summary>
-    /// Find the latest Star Citizen path from the RSI Launcher log file
-    /// </summary>
-    static string FindLatestStarCitizenPath(string logFilePath)
-    {
-        string[] lines = File.ReadAllLines(logFilePath);
-        DateTime latestTimestamp = DateTime.MinValue;
-        string? latestPath = null;
-
-        foreach (var line in lines)
-        {
-            var timestampMatch = Regex.Match(line, "{ \"t\":\"([^\"]+)\"");
-            var pathMatch = Regex.Match(
-                line,
-                "\"filePaths\":\\s*\\[\\s*\"([^\"]+)\"\\s*\\]|Launching Star Citizen LIVE from \\(([^)]+)\\)|Deleting (C:\\\\[^ ]+)");
-
-            if (timestampMatch.Success && pathMatch.Success)
-            {
-                DateTime timestamp = DateTime.Parse(timestampMatch.Groups[1].Value);
-                if (timestamp > latestTimestamp)
-                {
-                    latestTimestamp = timestamp;
-                    latestPath = pathMatch.Groups[1].Success
-                        ? pathMatch.Groups[1].Value
-                        : pathMatch.Groups[2].Success ? pathMatch.Groups[2].Value : pathMatch.Groups[3].Value;
-                }
-            }
-        }
-        if (string.IsNullOrWhiteSpace(latestPath))
-        {
-            Console.WriteLine($"RSI Launcher 2.0!");
-            foreach (var line in lines)
-            {
-                var pathMatch = Regex.Match(line, "Launching Star Citizen (PTU|LIVE) from \\(([^)]+)\\)");
-                if (pathMatch.Success)
-                {
-                    latestPath = pathMatch.Groups[2].Value;
-                    break;
-                }
-            }
-        }
-        return latestPath ?? string.Empty;
-    }
 }

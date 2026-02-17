@@ -1,7 +1,7 @@
 ﻿using System.Text;
 using System.Text.Json;
 
-namespace SC_TranslationSetup
+namespace SC_TranslationSetup.Helper
 {
     internal static class GitHub
     {
@@ -43,7 +43,7 @@ namespace SC_TranslationSetup
                 }
                 catch (Exception ex)
                 {
-                    Console.WriteLine($"Error occurred: {ex.Message}");
+                    Helper.ConsoleHelper.WriteWarningLine($"Error occurred: {ex.Message}");
                     Console.ReadKey();
                     Environment.Exit(1);
                 }
@@ -67,11 +67,11 @@ namespace SC_TranslationSetup
                 Encoding utf8WithBom = new UTF8Encoding(encoderShouldEmitUTF8Identifier: true);
 
                 await File.WriteAllTextAsync(fileName, content, utf8WithBom);
-                Console.WriteLine($"{Program.l.fileDownloaded}{fileName}");
+                Helper.ConsoleHelper.WriteMutedLine($"{Program.l.fileDownloaded}{fileName}");
             }
             catch (Exception ex)
             {
-                Console.WriteLine($"{Program.l.errorMessage}{ex.Message}");
+                Helper.ConsoleHelper.WriteWarningLine($"{Program.l.errorMessage}{ex.Message}");
             }
         }
 
