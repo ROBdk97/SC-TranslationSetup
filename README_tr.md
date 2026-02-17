@@ -12,7 +12,7 @@
 `SC-TranslationSetup` deposuna hoş geldiniz; bu araç, [StarCitizen-Localization](https://github.com/Dymerz/StarCitizen-Localization) deposundaki çevirileri kullanarak Star Citizen’i yerelleştirmek için kurulum sürecini kolaylaştırır. Yerelleştirme dosyalarının kurulumu basitleştirilerek, oyunu tercih ettiğiniz dilde oynamak isteyen oyuncular için sorunsuz bir deneyim hedeflenir.
 
 # Almanca örnek
-
+![Almanca örnek](SC-TranslationSetup.png)
 
 ### Özellikler
 
