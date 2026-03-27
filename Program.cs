@@ -22,18 +22,16 @@ internal partial class Program
         string scPath = "C:\\Program Files\\Roberts Space Industries\\StarCitizen";
         try
         {
-            var (LatestPath, VersionLookup) = SC_TranslationSetup.Helper.SCLaucher.GetLogData();
+            var (LatestPath, VersionLookup) = SCLaucher.GetLogData();
             Dictionary<string, string> versionLookup = VersionLookup;
             if (!Directory.Exists(scPath))
             {
-                SC_TranslationSetup.Helper.ConsoleHelper.
-                                // Find latest Star Citizen path from RSI Launcher log file
-                                WriteMutedLine($"{l.lookingForLogFile}");
+                // Find latest Star Citizen path from RSI Launcher log file
+                ConsoleHelper.WriteMutedLine($"{l.lookingForLogFile}");
                 if (!string.IsNullOrWhiteSpace(LatestPath))
                     scPath = LatestPath;
                 if (!string.IsNullOrWhiteSpace(scPath))
                 {
-
                     // cleanup scPath to remove additional //
                     scPath = scPath.Replace("\\\\", "\\");
                     scPath = scPath[..(scPath.IndexOf("StarCitizen") + 11)];
@@ -43,9 +41,8 @@ internal partial class Program
             PATHNOTFOUND:
                 if (!Directory.Exists(scPath) || Directory.Exists(scPath) && !scPath.Contains("StarCitizen"))
                 {
-                    SC_TranslationSetup.Helper.ConsoleHelper.
-                                        // Ask for path
-                                        WriteWarningLine($"\n{l.directoryNotFound}\n");
+                    // Ask for path
+                    ConsoleHelper.WriteWarningLine($"\n{l.directoryNotFound}\n");
                     Console.Write($"\n{l.enterPath}");
                     scPath = Console.ReadLine();
                     if (string.IsNullOrWhiteSpace(scPath))
@@ -56,36 +53,30 @@ internal partial class Program
                 }
             }
 
-            SC_TranslationSetup.Helper.ConsoleHelper.WriteMutedLine($"{l.starCitizenPath}{scPath}");
+            ConsoleHelper.WriteMutedLine($"{l.starCitizenPath}{scPath}");
 
             // Get available versions
             string selectedVersion = SelectStarCitizenVersion(scPath, versionLookup);
             if (string.IsNullOrEmpty(selectedVersion))
                 return;
-            SC_TranslationSetup.Helper.ConsoleHelper.
-
-                        // Get available languages
-                        WriteMutedLine($"{l.gettingLanguages}");
+            // Get available languages
+            ConsoleHelper.WriteMutedLine($"{l.gettingLanguages}");
             var languages = await GitHub.GetRepoData(selectedVersion);
-            string selectedLanguage = SelectLanguage(languages);
-            if (string.IsNullOrEmpty(selectedLanguage))
+            LanguageOption? selectedLanguage = SelectLanguage(languages);
+            if (selectedLanguage is null)
                 return;
 
             // Check if language is english and if so, clean up
-            if (selectedLanguage == "english")
+            if (selectedLanguage.IsCleanup)
             {
                 CleanUp(selectedVersion);
                 return;
             }
-
-            SC_TranslationSetup.Helper.ConsoleHelper.
-
-                        // Download files and edit user.cfg
-                        WriteMutedLine($"{l.downloadingFiles}");
+            // Download files and edit user.cfg
+            ConsoleHelper.WriteMutedLine($"{l.downloadingFiles}");
             await ProcessLanguageSelection(selectedVersion, selectedLanguage);
-            SC_TranslationSetup.Helper.ConsoleHelper.
-                        WriteSuccessLine($"\n{l.done}");
-            SC_TranslationSetup.Helper.ConsoleHelper.WriteSuccessLine($"{l.restartToApply}");
+            ConsoleHelper.WriteSuccessLine($"\n{l.done}");
+            ConsoleHelper.WriteSuccessLine($"{l.restartToApply}");
         }
         catch (Exception ex)
         {
@@ -95,18 +86,16 @@ internal partial class Program
 
     /// <summary>
     /// Download the global.ini file for the selected language and edit the user.cfg
-    static async Task<Task> ProcessLanguageSelection(string selectedVersion, string selectedLanguage)
+    /// </summary>
+    static async Task<Task> ProcessLanguageSelection(string selectedVersion, LanguageOption selectedLanguage)
     {
-        string fileLang = Special.HandleNotSupported(selectedLanguage);
+        string fileLang = Special.HandleNotSupported(selectedLanguage.TargetLanguage);
         string filePath = Path.Combine(selectedVersion, "data", "Localization", fileLang, "global.ini");
-        string branch = "main";
-        if (selectedVersion.Contains("PTU"))
-            branch = "ptu";
 
         string? directoryPath = Path.GetDirectoryName(filePath);
         if (!string.IsNullOrWhiteSpace(directoryPath))
             Directory.CreateDirectory(directoryPath);
-        await GitHub.DownloadFileAsync(branch, selectedLanguage, filePath);
+        await GitHub.DownloadFileAsync(selectedLanguage.DownloadUrl, filePath);
         EditUserConfig(selectedVersion, fileLang);
         return Task.CompletedTask;
     }
@@ -139,7 +128,7 @@ internal partial class Program
 
         // Write back to file
         File.WriteAllLines(filePath, userCfgContent);
-        SC_TranslationSetup.Helper.ConsoleHelper.WriteMutedLine($"{l.cfgUpdated}");
+        ConsoleHelper.WriteMutedLine($"{l.cfgUpdated}");
     }
 
     /// <summary>
@@ -158,7 +147,7 @@ internal partial class Program
             })
             .ToArray();
 
-        int selectedIndex = SC_TranslationSetup.Helper.ConsoleHelper.SelectFromList(l.selectVersion, displayNames, l.selectedVersion);
+        int selectedIndex = ConsoleHelper.SelectFromList(l.selectVersion, displayNames, l.selectedVersion);
         if (selectedIndex < 0)
             Environment.Exit(0);
 
@@ -168,13 +157,13 @@ internal partial class Program
     /// <summary>
     /// Select the language to use
     /// </summary>
-    static string SelectLanguage(string[] languages)
+    static LanguageOption? SelectLanguage(LanguageOption[] languages)
     {
         var displayNames = languages
-            .Select(language => language == "english" ? $"{language} / {l.uninstall}" : language)
+            .Select(language => language.IsCleanup ? $"{language.DisplayName} / {l.uninstall}" : language.DisplayName)
             .ToArray();
 
-        int selectedIndex = SC_TranslationSetup.Helper.ConsoleHelper.SelectFromList(l.selectLanguage, displayNames, l.enterLanguage);
+        int selectedIndex = ConsoleHelper.SelectFromList(l.selectLanguage, displayNames, l.enterLanguage);
         if (selectedIndex < 0)
             Environment.Exit(0);
 
@@ -188,7 +177,7 @@ internal partial class Program
     {
         // ask if user wants to delete the english files
         string[] options = ["Yes", "No"];
-        int selectedIndex = SC_TranslationSetup.Helper.ConsoleHelper.SelectFromList($"{l.confirmEnglishTranslation}", options);
+        int selectedIndex = ConsoleHelper.SelectFromList($"{l.confirmEnglishTranslation}", options);
         if (selectedIndex != 0)
             return;
 
@@ -218,8 +207,8 @@ internal partial class Program
                 return false; // Keep the line
             });
         File.WriteAllLines(userCfgPath, userCfgContent);
-        SC_TranslationSetup.Helper.ConsoleHelper.WriteSuccessLine($"{l.cleanupDone}");
-        SC_TranslationSetup.Helper.ConsoleHelper.WriteSuccessLine($"{l.restartToApply}");
+        ConsoleHelper.WriteSuccessLine($"{l.cleanupDone}");
+        ConsoleHelper.WriteSuccessLine($"{l.restartToApply}");
     }
 
 }

@@ -22,6 +22,20 @@ Bienvenido al repositorio `SC-TranslationSetup`, la herramienta de configuració
 - **Interfaz Amigable al Usuario:** Diseño intuitivo para una operación sin complicaciones.
 - **Actualizaciones Automáticas:** Obtiene automáticamente las últimas traducciones del repositorio StarCitizen-Localization en cada ejecución.
 
+### Fuentes comunitarias adicionales
+
+El repositorio objetivo principal de esta aplicación es [Dymerz/StarCitizen-Localization](https://github.com/Dymerz/StarCitizen-Localization).
+
+La herramienta también incluye otras fuentes de idioma seleccionadas y mantenidas por la comunidad:
+
+- [`MrKraken/StarStrings`](https://github.com/MrKraken/StarStrings) - versión inglesa no oficial con ajustes de la comunidad.
+- [`ExoAE/ScCompLangPack`](https://github.com/ExoAE/ScCompLangPack) - versión inglesa no oficial con ajustes de la comunidad.
+- [`rjcncpt/StarCitizen-Deutsch-INI`](https://github.com/rjcncpt/StarCitizen-Deutsch-INI) - opciones comunitarias en alemán y alemán suizo.
+
+El propietario de cada repositorio personalizado se muestra en la selección de idioma dentro de la aplicación.
+
+El repositorio [`rjcncpt/StarCitizen-Deutsch-INI`](https://github.com/rjcncpt/StarCitizen-Deutsch-INI) indica que parte de su contenido se ofrece bajo la licencia CC-BY-NC-SA-4.0. Consulta ese repositorio para ver los términos de atribución y reutilización.
+
 ### Descarga
 
 Obtén la última versión de la Herramienta SC-TranslationSetup:
@@ -56,4 +70,14 @@ Consulta el [LICENSE](LICENSE.txt) para más detalles.
 
 ---
 ## Descargo de responsabilidad
-Este es un sitio de fans no oficial de Star Citizen, no afiliado al grupo de empresas Cloud Imperium. Todo el contenido en este sitio no autorizado por su anfitrión o usuarios es propiedad de sus respectivos dueños. Star Citizen®, Roberts Space Industries® y Cloud Imperium® son marcas registradas de Cloud Imperium Rights LLC
+
+> [!IMPORTANT]
+> **Hecho por la comunidad** - Este es un proyecto de fans no oficial de Star Citizen, no afiliado al grupo de empresas Cloud Imperium. Todo el contenido de este repositorio que no haya sido creado por su anfitrión o sus usuarios es propiedad de sus respectivos dueños.
+>
+> - La posibilidad de personalizar tu localización usando el archivo `global.ini` extraído está prevista/autorizada por CIG para apoyar traducciones creadas por la comunidad hasta que se integren oficialmente
+>   - *[Star Citizen: Community Localization Update](https://robertsspaceindustries.com/spectrum/community/SC/forum/1/thread/star-citizen-community-localization-update) 2023-10-11*
+> - Se considera una contribución de terceros; úsalo según tu propio criterio
+> - [RSI Terms of Service](https://robertsspaceindustries.com/tos)
+> - [Translation & Fan Localization Statement](https://support.robertsspaceindustries.com/hc/en-us/articles/360006895793-Star-Citizen-Fankit-and-Fandom-FAQ#h_01JNKSPM7MRSB1WNBW6FGD2H98)
+
+Star Citizen®, Roberts Space Industries® y Cloud Imperium® son marcas registradas de Cloud Imperium Rights LLC

@@ -22,6 +22,20 @@ Bienvenue sur le dépôt `SC-TranslationSetup`, l'outil de configuration de réf
 - **Interface Conviviale :** Conception intuitive pour une opération sans tracas.
 - **Mises à Jour Automatiques :** Récupère automatiquement les dernières traductions du dépôt StarCitizen-Localization à chaque lancement.
 
+### Sources communautaires supplémentaires
+
+Le dépôt cible principal de cette application est [Dymerz/StarCitizen-Localization](https://github.com/Dymerz/StarCitizen-Localization).
+
+L'outil inclut aussi d'autres sources de langue sélectionnées et maintenues par la communauté :
+
+- [`MrKraken/StarStrings`](https://github.com/MrKraken/StarStrings) - version anglaise non officielle avec ajustements de la communauté.
+- [`ExoAE/ScCompLangPack`](https://github.com/ExoAE/ScCompLangPack) - version anglaise non officielle avec ajustements de la communauté.
+- [`rjcncpt/StarCitizen-Deutsch-INI`](https://github.com/rjcncpt/StarCitizen-Deutsch-INI) - options communautaires en allemand et en suisse allemand.
+
+Le propriétaire de chaque dépôt personnalisé est affiché dans la sélection de langue de l'application.
+
+Le dépôt [`rjcncpt/StarCitizen-Deutsch-INI`](https://github.com/rjcncpt/StarCitizen-Deutsch-INI) indique qu'une partie de son contenu est fournie sous licence CC-BY-NC-SA-4.0. Veuillez consulter ce dépôt pour les conditions d'attribution et de réutilisation.
+
 ### Téléchargement
 
 Obtenez la dernière version de l'outil SC-TranslationSetup :
@@ -56,4 +70,14 @@ Amusez-vous à jouer à Star Citizen dans votre langue ! 🚀🌌
 
 ---
 ## Avertissement
-Ceci est un site de fans non officiel de Star Citizen, non affilié au groupe de sociétés Cloud Imperium. Tout contenu sur ce site qui n'est pas rédigé par son hôte ou ses utilisateurs est la propriété de leurs propriétaires respectifs. Star Citizen®, Roberts Space Industries® et Cloud Imperium® sont des marques déposées de Cloud Imperium Rights LLC.
+
+> [!IMPORTANT]
+> **Créé par la communauté** - Il s'agit d'un projet de fans non officiel Star Citizen, sans affiliation avec le groupe de sociétés Cloud Imperium. Tout contenu de ce dépôt qui n'est pas rédigé par son hôte ou ses utilisateurs appartient à ses propriétaires respectifs.
+>
+> - La possibilité de personnaliser votre localisation à l'aide du fichier `global.ini` extrait est prévue/autorisée par CIG afin de soutenir les traductions créées par la communauté jusqu'à leur intégration officielle
+>   - *[Star Citizen: Community Localization Update](https://robertsspaceindustries.com/spectrum/community/SC/forum/1/thread/star-citizen-community-localization-update) 2023-10-11*
+> - Considéré comme des contributions tierces ; utilisation à votre propre discrétion
+> - [RSI Terms of Service](https://robertsspaceindustries.com/tos)
+> - [Translation & Fan Localization Statement](https://support.robertsspaceindustries.com/hc/en-us/articles/360006895793-Star-Citizen-Fankit-and-Fandom-FAQ#h_01JNKSPM7MRSB1WNBW6FGD2H98)
+
+Star Citizen®, Roberts Space Industries® et Cloud Imperium® sont des marques déposées de Cloud Imperium Rights LLC.
