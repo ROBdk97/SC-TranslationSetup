@@ -22,6 +22,20 @@ Bienvenue sur le dépôt `SC-TranslationSetup`, l'outil de configuration de réf
 - **Interface Conviviale :** Conception intuitive pour une opération sans tracas.
 - **Mises à Jour Automatiques :** Récupère automatiquement les dernières traductions du dépôt StarCitizen-Localization à chaque lancement.
 
+### Sources communautaires supplémentaires
+
+Le dépôt cible principal de cette application est [Dymerz/StarCitizen-Localization](https://github.com/Dymerz/StarCitizen-Localization).
+
+L'outil inclut aussi d'autres sources de langue sélectionnées et maintenues par la communauté :
+
+- [`MrKraken/StarStrings`](https://github.com/MrKraken/StarStrings) - version anglaise non officielle avec ajustements de la communauté.
+- [`ExoAE/ScCompLangPack`](https://github.com/ExoAE/ScCompLangPack) - version anglaise non officielle avec ajustements de la communauté.
+- [`rjcncpt/StarCitizen-Deutsch-INI`](https://github.com/rjcncpt/StarCitizen-Deutsch-INI) - options communautaires en allemand et en suisse allemand.
+
+Le propriétaire de chaque dépôt personnalisé est affiché dans la sélection de langue de l'application.
+
+Le dépôt [`rjcncpt/StarCitizen-Deutsch-INI`](https://github.com/rjcncpt/StarCitizen-Deutsch-INI) indique qu'une partie de son contenu est fournie sous licence CC-BY-NC-SA-4.0. Veuillez consulter ce dépôt pour les conditions d'attribution et de réutilisation.
+
 ### Téléchargement
 
 Obtenez la dernière version de l'outil SC-TranslationSetup :

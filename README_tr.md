@@ -22,6 +22,20 @@
 - Kullanıcı dostu arayüz: Zahmetsiz kullanım için sezgisel tasarım
 - Otomatik güncellemeler: Her çalıştırmada StarCitizen-Localization deposundan en güncel çevirileri otomatik olarak çeker
 
+### Ek topluluk kaynakları
+
+Bu uygulamanın ana hedef deposu [Dymerz/StarCitizen-Localization](https://github.com/Dymerz/StarCitizen-Localization) deposudur.
+
+Araç ayrıca topluluk tarafından sürdürülen seçili diğer dil kaynaklarını da içerir:
+
+- [`MrKraken/StarStrings`](https://github.com/MrKraken/StarStrings) - topluluk düzenlemeleri içeren resmi olmayan İngilizce sürüm.
+- [`ExoAE/ScCompLangPack`](https://github.com/ExoAE/ScCompLangPack) - topluluk düzenlemeleri içeren resmi olmayan İngilizce sürüm.
+- [`rjcncpt/StarCitizen-Deutsch-INI`](https://github.com/rjcncpt/StarCitizen-Deutsch-INI) - Almanca ve İsviçre Almancası için topluluk seçenekleri.
+
+Her özel deponun sahibi, uygulamadaki dil seçiminde gösterilir.
+
+[`rjcncpt/StarCitizen-Deutsch-INI`](https://github.com/rjcncpt/StarCitizen-Deutsch-INI) deposu, içeriğinin bir bölümünün CC-BY-NC-SA-4.0 lisansı altında sunulduğunu belirtir. Atıf ve yeniden kullanım koşulları için lütfen ilgili depoya bakın.
+
 ### İndirme
 
 SC-TranslationSetup aracının en son sürümünü indirin:
@@ -57,7 +71,3 @@ Star Citizen’i kendi dilinizde oynamanın keyfini çıkarın!
 ***
 ## Sorumluluk Reddi
 Bu, Cloud Imperium şirketler grubu ile bağlantısı olmayan resmi olmayan bir Star Citizen hayran sitesidir. Bu sitede barındırıcısı veya kullanıcıları tarafından yazılmayan tüm içerikler, ilgili sahiplerinin mülkiyetindedir. Star Citizen®, Roberts Space Industries® ve Cloud Imperium®, Cloud Imperium Rights LLC’nin tescilli ticari markalarıdır.
-
-***
-
-Dil listesinde Türkçe satırını eklememi ister misiniz, yoksa depoda henüz `README_tr.md` bağlantısı görünmesin diye onu kaldırayım mı?
