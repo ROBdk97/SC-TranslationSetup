@@ -70,4 +70,14 @@ Consulta el [LICENSE](LICENSE.txt) para más detalles.
 
 ---
 ## Descargo de responsabilidad
-Este es un sitio de fans no oficial de Star Citizen, no afiliado al grupo de empresas Cloud Imperium. Todo el contenido en este sitio no autorizado por su anfitrión o usuarios es propiedad de sus respectivos dueños. Star Citizen®, Roberts Space Industries® y Cloud Imperium® son marcas registradas de Cloud Imperium Rights LLC
+
+> [!IMPORTANT]
+> **Hecho por la comunidad** - Este es un proyecto de fans no oficial de Star Citizen, no afiliado al grupo de empresas Cloud Imperium. Todo el contenido de este repositorio que no haya sido creado por su anfitrión o sus usuarios es propiedad de sus respectivos dueños.
+>
+> - La posibilidad de personalizar tu localización usando el archivo `global.ini` extraído está prevista/autorizada por CIG para apoyar traducciones creadas por la comunidad hasta que se integren oficialmente
+>   - *[Star Citizen: Community Localization Update](https://robertsspaceindustries.com/spectrum/community/SC/forum/1/thread/star-citizen-community-localization-update) 2023-10-11*
+> - Se considera una contribución de terceros; úsalo según tu propio criterio
+> - [RSI Terms of Service](https://robertsspaceindustries.com/tos)
+> - [Translation & Fan Localization Statement](https://support.robertsspaceindustries.com/hc/en-us/articles/360006895793-Star-Citizen-Fankit-and-Fandom-FAQ#h_01JNKSPM7MRSB1WNBW6FGD2H98)
+
+Star Citizen®, Roberts Space Industries® y Cloud Imperium® son marcas registradas de Cloud Imperium Rights LLC

@@ -70,4 +70,14 @@ Star Citizen’i kendi dilinizde oynamanın keyfini çıkarın!
 
 ***
 ## Sorumluluk Reddi
-Bu, Cloud Imperium şirketler grubu ile bağlantısı olmayan resmi olmayan bir Star Citizen hayran sitesidir. Bu sitede barındırıcısı veya kullanıcıları tarafından yazılmayan tüm içerikler, ilgili sahiplerinin mülkiyetindedir. Star Citizen®, Roberts Space Industries® ve Cloud Imperium®, Cloud Imperium Rights LLC’nin tescilli ticari markalarıdır.
+
+> [!IMPORTANT]
+> **Topluluk tarafından yapıldı** - Bu, Cloud Imperium şirketler grubuna bağlı olmayan, resmi olmayan bir Star Citizen hayran projesidir. Bu depoda barındırıcısı veya kullanıcıları tarafından oluşturulmayan tüm içerikler ilgili sahiplerinin mülkiyetindedir.
+>
+> - Çıkarılmış `global.ini` dosyasını kullanarak yerelleştirmenizi özelleştirme imkânı, resmi olarak entegre edilene kadar topluluk yapımı çevirileri desteklemek için CIG tarafından amaçlanmış/onaylanmıştır
+>   - *[Star Citizen: Community Localization Update](https://robertsspaceindustries.com/spectrum/community/SC/forum/1/thread/star-citizen-community-localization-update) 2023-10-11*
+> - Üçüncü taraf katkıları olarak değerlendirilir; kendi takdirinize göre kullanın
+> - [RSI Terms of Service](https://robertsspaceindustries.com/tos)
+> - [Translation & Fan Localization Statement](https://support.robertsspaceindustries.com/hc/en-us/articles/360006895793-Star-Citizen-Fankit-and-Fandom-FAQ#h_01JNKSPM7MRSB1WNBW6FGD2H98)
+
+Star Citizen®, Roberts Space Industries® ve Cloud Imperium®, Cloud Imperium Rights LLC’nin tescilli ticari markalarıdır.
