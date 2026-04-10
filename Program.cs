@@ -136,7 +136,7 @@ internal partial class Program
     /// </summary>
     static string SelectStarCitizenVersion(string latestPath, Dictionary<string, string> versionLookup)
     {
-        string[] subfolders = Directory.GetDirectories(latestPath);
+        string[] subfolders = [.. Directory.GetDirectories(latestPath).Where(folder => File.Exists(Path.Combine(folder, "Data.p4k")))];
         var displayNames = subfolders
             .Select(folder =>
             {
