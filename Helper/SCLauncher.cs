@@ -31,15 +31,15 @@ namespace SC_TranslationSetup.Helper
         private static partial Regex FilePathsRegex();
 
         // SC LIVE 3.24.1 ... \bin\  C:\...
-        [GeneratedRegex("""SC (LIVE|PTU|TECH-PREVIEW|EPTU) ([^\s)]+).*?\\bin\\s+(C:\\.+?)(?=\s*"|\s*\)|$)""", RegexOptions.IgnoreCase)]
+        [GeneratedRegex("""SC (LIVE|PTU|TECH-PREVIEW|EPTU|HOTFIX) ([^\s)]+).*?\\bin\\s+(C:\\.+?)(?=\s*"|\s*\)|$)""", RegexOptions.IgnoreCase)]
         private static partial Regex DeltaUpdateRegex();
 
         // Launching Star Citizen LIVE from (C:\...)
-        [GeneratedRegex("""Launching Star Citizen (PTU|LIVE|TECH-PREVIEW|EPTU) from \(([^)]+)\)""", RegexOptions.IgnoreCase)]
+        [GeneratedRegex("""Launching Star Citizen (PTU|LIVE|TECH-PREVIEW|EPTU|HOTFIX) from \(([^)]+)\)""", RegexOptions.IgnoreCase)]
         private static partial Regex LauncherRegex();
 
         // Star Citizen LIVE 3.24.1 ... at C:\...
-        [GeneratedRegex("""Star Citizen (LIVE|PTU|TECH-PREVIEW|EPTU) ([^\s]+).*? at (C:\\.+?)(?=\s*\(|\s*"|$)""", RegexOptions.IgnoreCase)]
+        [GeneratedRegex("""Star Citizen (LIVE|PTU|TECH-PREVIEW|EPTU|HOTFIX) ([^\s]+).*? at (C:\\.+?)(?=\s*\(|\s*"|$)""", RegexOptions.IgnoreCase)]
         private static partial Regex InstallerRegex();
 
         /// <summary>
