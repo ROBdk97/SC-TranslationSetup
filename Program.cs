@@ -5,7 +5,7 @@ internal partial class Program
 {
     internal static Lang l = Localization.GetLang();
 
-    private static async Task Main(string[] args)
+    private static async Task Main()
     {
         Console.WriteLine($"{l.translationSetup}\n----------------------------------------");
         await Setup();
@@ -22,7 +22,7 @@ internal partial class Program
         string scPath = "C:\\Program Files\\Roberts Space Industries\\StarCitizen";
         try
         {
-            var (LatestPath, VersionLookup) = SCLaucher.GetLogData();
+            var (LatestPath, VersionLookup) = await SCLauncher.GetLogDataAsync();
             Dictionary<string, string> versionLookup = VersionLookup;
             if (!Directory.Exists(scPath))
             {
