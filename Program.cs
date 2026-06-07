@@ -1,5 +1,6 @@
 ﻿using SC_TranslationSetup.Helper;
 using SC_TranslationSetup.Models;
+using System.Globalization;
 
 internal partial class Program
 {
@@ -160,13 +161,21 @@ internal partial class Program
     /// </summary>
     static LanguageOption? SelectLanguage(LanguageOption[] languages)
     {
-        var displayNames = languages
-            .Select(language => language.IsCleanup ? $"{language.DisplayName} / {l.uninstall}" : language.DisplayName)
-            .ToArray();
+        static string FormatLanguage(LanguageOption language)
+        {
+            string name = language.IsCleanup
+                ? $"{language.DisplayName} / {l.uninstall}"
+                : language.DisplayName;
 
-        int selectedIndex = ConsoleHelper.SelectFromList(l.selectLanguage, displayNames, l.enterLanguage);
-        if (selectedIndex < 0)
-            Environment.Exit(0);
+            return language.LastUpdated.HasValue
+                ? $"{name} ({string.Format(CultureInfo.CurrentUICulture, l.lastUpdatedFormat!, language.LastUpdated.Value)})"
+                : name;
+        }
+
+        int selectedIndex = ConsoleHelper.SelectFromList(
+            l.selectLanguage,
+            [.. languages.Select(FormatLanguage)],
+            l.enterLanguage);
 
         return languages[selectedIndex];
     }
@@ -177,7 +186,7 @@ internal partial class Program
     static void CleanUp(string scPath)
     {
         // ask if user wants to delete the english files
-        string[] options = ["Yes", "No"];
+        string[] options = [l.optionYes!, l.optionNo!];
         int selectedIndex = ConsoleHelper.SelectFromList($"{l.confirmEnglishTranslation}", options);
         if (selectedIndex != 0)
             return;
@@ -198,13 +207,9 @@ internal partial class Program
             line =>
             {
                 if (line.Contains("g_language"))
-                {
                     return true; // Remove the line
-                }
                 if (line.Contains("g_languageAudio"))
-                {
                     return true; // Remove the line
-                }
                 return false; // Keep the line
             });
         File.WriteAllLines(userCfgPath, userCfgContent);

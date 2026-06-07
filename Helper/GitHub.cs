@@ -41,15 +41,18 @@ namespace SC_TranslationSetup.Helper
                             if (type == "dir" && !string.IsNullOrWhiteSpace(name))
                             {
                                 string downloadUrl = $"https://raw.githubusercontent.com/{owner}/{repo}/{branch}/data/Localization/{name}/global.ini";
-                                languages.Add(new LanguageOption(name, name, name, downloadUrl, name == "english"));
+                                string languagePath = $"{path}/{name}";
+                                DateTimeOffset? lastUpdated = null;
+                                if (name != "english")
+                                    lastUpdated = await GetLastCommitDateAsync(owner, repo, branch, languagePath);
+                                languages.Add(new LanguageOption(name, name, name, downloadUrl, name == "english", lastUpdated));
                             }
                         }
                 }
                 catch (Exception ex)
                 {
-                    Helper.ConsoleHelper.WriteWarningLine($"Error occurred: {ex.Message}");
-                    Console.ReadKey();
-                    Environment.Exit(1);
+                    ConsoleHelper.WriteWarningLine($"Error occurred: {ex.Message}");
+                    languages.Add(new LanguageOption("english", "english", "english", $"https://raw.githubusercontent.com/{owner}/{repo}/{branch}/data/Localization/english/global.ini", true, null));
                 }
             }
 
@@ -70,12 +73,78 @@ namespace SC_TranslationSetup.Helper
                 Encoding utf8WithBom = new UTF8Encoding(encoderShouldEmitUTF8Identifier: true);
 
                 await File.WriteAllTextAsync(fileName, content, utf8WithBom);
-                Helper.ConsoleHelper.WriteMutedLine($"{Program.l.fileDownloaded}{fileName}");
+                ConsoleHelper.WriteMutedLine($"{Program.l.fileDownloaded}{fileName}");
             }
             catch (Exception ex)
             {
-                Helper.ConsoleHelper.WriteWarningLine($"{Program.l.errorMessage}{ex.Message}");
+                ConsoleHelper.WriteWarningLine($"{Program.l.errorMessage}{ex.Message}");
             }
+        }
+
+        /// <summary>
+        /// Get the last commit date for a specific path in a GitHub repository
+        /// </summary>
+        /// <param name="owner">Repository owner</param>
+        /// <param name="repo">Repository name</param>
+        /// <param name="branch">Branch name</param>
+        /// <param name="path">Path to the file or directory</param>
+        /// <returns>DateTimeOffset of the last commit, or null if not found</returns>
+        private static async Task<DateTimeOffset?> GetLastCommitDateAsync(string owner, string repo, string branch, string path)
+        {
+            string url = $"https://api.github.com/repos/{owner}/{repo}/commits?path={path}&per_page=1&sha={branch}";
+
+            using HttpClient client = new();
+            client.DefaultRequestHeaders.Add("User-Agent", "request");
+
+            try
+            {
+                HttpResponseMessage response = await client.GetAsync(url);
+                response.EnsureSuccessStatusCode();
+                string content = await response.Content.ReadAsStringAsync();
+
+                JsonDocument doc = JsonDocument.Parse(content);
+                JsonElement root = doc.RootElement;
+
+                if (root.ValueKind == JsonValueKind.Array && root.GetArrayLength() > 0)
+                {
+                    JsonElement firstCommit = root[0];
+                    if (firstCommit.TryGetProperty("commit", out JsonElement commitElement))
+                    {
+                        if (commitElement.TryGetProperty("committer", out JsonElement committerElement))
+                        {
+                            if (committerElement.TryGetProperty("date", out JsonElement dateElement))
+                            {
+                                string? dateString = dateElement.GetString();
+                                if (!string.IsNullOrWhiteSpace(dateString) && DateTimeOffset.TryParse(dateString, out DateTimeOffset commitDate))
+                                {
+                                    return commitDate;
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+            catch (Exception) { }
+
+            return null;
+        }
+
+        /// <summary>
+        /// Helper method to create a custom LanguageOption with repository information
+        /// </summary>
+        private static async Task<LanguageOption> CreateCustomLanguageOption(
+            string id,
+            string displayName,
+            string targetLanguage,
+            string owner,
+            string repo,
+            string branch,
+            string filePath,
+            bool isCleanup = false)
+        {
+            string downloadUrl = $"https://raw.githubusercontent.com/{owner}/{repo}/{branch}/{filePath}";
+            DateTimeOffset? lastUpdated = await GetLastCommitDateAsync(owner, repo, branch, filePath);
+            return new LanguageOption(id, displayName, targetLanguage, downloadUrl, isCleanup, lastUpdated);
         }
 
         /// <summary>
@@ -93,26 +162,41 @@ namespace SC_TranslationSetup.Helper
             if (branch == "main")
             {
                 // Add some custom languages that are not in the repository
-                languages.Add(new LanguageOption(
-                "english_starstrings",
-                "english / StarStrings / MrKraken",
-                "english",
-                "https://raw.githubusercontent.com/MrKraken/StarStrings/master/Data/Localization/english/global.ini"));
-                languages.Add(new LanguageOption(
+                languages.Add(await CreateCustomLanguageOption(
+                    "english_starstrings",
+                    "english / StarStrings / MrKraken",
+                    "english",
+                    "MrKraken",
+                    "StarStrings",
+                    "master",
+                    "Data/Localization/english/global.ini"));
+
+                languages.Add(await CreateCustomLanguageOption(
                     "english_sccomplangpack",
                     "english / ScCompLangPack / ExoAE",
                     "english",
-                    "https://raw.githubusercontent.com/ExoAE/ScCompLangPack/main/ScCompLangPack/data/Localization/english/global.ini"));
-                languages.Add(new LanguageOption(
+                    "ExoAE",
+                    "ScCompLangPack",
+                    "main",
+                    "ScCompLangPack/data/Localization/english/global.ini"));
+
+                languages.Add(await CreateCustomLanguageOption(
                     "german_scdeutsch",
                     "german / SC Deutsch / rjcncpt",
                     "german_(germany)",
-                    "https://raw.githubusercontent.com/rjcncpt/StarCitizen-Deutsch-INI/main/live/global.ini"));
-                languages.Add(new LanguageOption(
+                    "rjcncpt",
+                    "StarCitizen-Deutsch-INI",
+                    "main",
+                    "live/global.ini"));
+
+                languages.Add(await CreateCustomLanguageOption(
                     "swiss_german_scdeutsch",
                     "swiss german / SC Deutsch / rjcncpt",
                     "german_(germany)",
-                    "https://raw.githubusercontent.com/rjcncpt/StarCitizen-Deutsch-INI/main/live-CH/global.ini"));
+                    "rjcncpt",
+                    "StarCitizen-Deutsch-INI",
+                    "main",
+                    "live-CH/global.ini"));
             }
             return [.. languages];
         }
