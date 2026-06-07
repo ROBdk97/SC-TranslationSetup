@@ -34,7 +34,8 @@ internal partial class Program
                 {
                     // cleanup scPath to remove additional //
                     scPath = scPath.Replace("\\\\", "\\");
-                    scPath = scPath[..(scPath.IndexOf("StarCitizen") + 11)];
+                    scPath = ExtractStarCitizenPath(scPath);
+
                 }
 
                 // check if path exists and if not, ask for path
@@ -211,4 +212,30 @@ internal partial class Program
         ConsoleHelper.WriteSuccessLine($"{l.restartToApply}");
     }
 
+    /// <summary>
+    /// Extract the Star Citizen path from the given path by looking for the "StarCitizen" 
+    /// folder and verifying it contains a Data.p4k file in one of its subdirectories
+    /// </summary>
+    /// <param name="path"></param>
+    /// <returns></returns>
+    static string ExtractStarCitizenPath(string path)
+    {
+        if (string.IsNullOrWhiteSpace(path))
+            return path;
+
+        var parts = path.Split(['\\', '/'], StringSplitOptions.RemoveEmptyEntries);
+        var current = Path.IsPathRooted(path) ? Path.GetPathRoot(path)! : "";
+
+        foreach (var part in parts)
+        {
+            current = string.IsNullOrEmpty(current) ? part : Path.Combine(current, part);
+
+            if (part == "StarCitizen" &&
+                Directory.Exists(current) &&
+                Directory.EnumerateDirectories(current).Any(d => File.Exists(Path.Combine(d, "Data.p4k"))))
+                return current;
+        }
+
+        return path;
+    }
 }

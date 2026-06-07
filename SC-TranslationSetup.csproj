@@ -10,6 +10,8 @@
 		<ApplicationIcon>ROB.ico</ApplicationIcon>
 		<Platforms>x64</Platforms>
 		<RuntimeIdentifiers>win-x64</RuntimeIdentifiers>
+		<Version>0.1.10</Version>
+		<Copyright>ROBdk97 $([System.DateTime]::UtcNow.ToString('yyyy'))</Copyright>
 	</PropertyGroup>
 
 	<ItemGroup>
