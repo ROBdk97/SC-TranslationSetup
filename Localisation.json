@@ -24,7 +24,10 @@
       "uninstall": "Uninstall Translation",
       "cleanupDone": "Cleanup done!",
       "fileDownloaded": "File downloaded successfully to ",
-      "errorMessage": "Error occurred: "
+      "errorMessage": "Error occurred: ",
+      "lastUpdatedFormat": "Updated: {0:d}",
+      "optionYes": "Yes",
+      "optionNo": "No"
     },
     "fr": {
       "translationSetup": "Configuration de la traduction de Star Citizen",
@@ -50,7 +53,10 @@
       "uninstall": "Désinstallation de la traduction",
       "cleanupDone": "Nettoyage terminé !",
       "fileDownloaded": "Fichier téléchargé avec succès comme ",
-      "errorMessage": "Erreur survenue : "
+      "errorMessage": "Erreur survenue : ",
+      "lastUpdatedFormat": "Mis à jour : {0:d}",
+      "optionYes": "Oui",
+      "optionNo": "Non"
     },
     "de": {
       "translationSetup": "Einrichtung der Star Citizen Übersetzung",
@@ -76,7 +82,10 @@
       "uninstall": "Deinstallation der Übersetzung",
       "cleanupDone": "Aufräumen abgeschlossen!",
       "fileDownloaded": "Datei erfolgreich heruntergeladen zu ",
-      "errorMessage": "Fehler aufgetreten: "
+      "errorMessage": "Fehler aufgetreten: ",
+      "lastUpdatedFormat": "Aktualisiert: {0:d}",
+      "optionYes": "Ja",
+      "optionNo": "Nein"
     },
     "es": {
       "translationSetup": "Configuración de Traducción de Star Citizen",
@@ -102,7 +111,10 @@
       "uninstall": "Desinstalación de la traducción",
       "cleanupDone": "¡Limpieza completada!",
       "fileDownloaded": "Archivo descargado con éxito como ",
-      "errorMessage": "Error ocurrido: "
+      "errorMessage": "Error ocurrido: ",
+      "lastUpdatedFormat": "Actualizado: {0:d}",
+      "optionYes": "Sí",
+      "optionNo": "No"
     },
     "pt": {
       "translationSetup": "Configuração de Tradução do Star Citizen",
@@ -128,7 +140,10 @@
       "uninstall": "Desinstalação da Tradução",
       "cleanupDone": "Limpeza concluída!",
       "fileDownloaded": "Arquivo baixado com sucesso como ",
-      "errorMessage": "Erro ocorrido: "
+      "errorMessage": "Erro ocorrido: ",
+      "lastUpdatedFormat": "Atualizado: {0:d}",
+      "optionYes": "Sim",
+      "optionNo": "Não"
     },
     "it": {
       "translationSetup": "Configurazione della Traduzione di Star Citizen",
@@ -154,7 +169,10 @@
       "uninstall": "Disinstallazione della traduzione",
       "cleanupDone": "Pulizia completata!",
       "fileDownloaded": "File scaricato con successo come ",
-      "errorMessage": "Errore: "
+      "errorMessage": "Errore: ",
+      "lastUpdatedFormat": "Aggiornato: {0:d}",
+      "optionYes": "Sì",
+      "optionNo": "No"
     },
     "lt": {
       "translationSetup": "Star Citizen Vertimo Sąranka",
@@ -180,7 +198,10 @@
       "uninstall": "Pašalinti vertimą",
       "cleanupDone": "Išvalymas atliktas!",
       "fileDownloaded": "Failas sėkmingai atsisiųstas į ",
-      "errorMessage": "Įvyko klaida: "
+      "errorMessage": "Įvyko klaida: ",
+      "lastUpdatedFormat": "Atnaujinta: {0:d}",
+      "optionYes": "Taip",
+      "optionNo": "Ne"
     },
     "tr": {
       "translationSetup": "Star Citizen Çeviri Kurulumu",
@@ -206,7 +227,10 @@
       "uninstall": "Çeviriyi Kaldır",
       "cleanupDone": "Temizlik tamamlandı!",
       "fileDownloaded": "Dosya başarıyla indirildi: ",
-      "errorMessage": "Hata oluştu: "
+      "errorMessage": "Hata oluştu: ",
+      "lastUpdatedFormat": "Güncellendi: {0:d}",
+      "optionYes": "Evet",
+      "optionNo": "Hayır"
     }
   }
 }

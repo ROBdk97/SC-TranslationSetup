@@ -31,6 +31,9 @@
         public string? cleanupDone { get; set; }
         public string? fileDownloaded { get; set; }
         public string? errorMessage { get; set; }
+        public string? lastUpdatedFormat { get; set; }
+        public string? optionYes { get; set; }
+        public string? optionNo { get; set; }
 #pragma warning restore IDE1006 // Naming Styles
     }
 }
