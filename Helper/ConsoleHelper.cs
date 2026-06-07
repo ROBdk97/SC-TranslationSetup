@@ -136,7 +136,7 @@ namespace SC_TranslationSetup.Helper
                             Console.WriteLine($"{selectedPrefix}{options[selectedIndex]}");
                         return selectedIndex;
                     case ConsoleKey.Escape:
-                        Console.WriteLine();
+                        Environment.Exit(0);
                         return -1;
                 }
 
