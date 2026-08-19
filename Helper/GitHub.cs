@@ -169,16 +169,25 @@ namespace SC_TranslationSetup.Helper
                     "MrKraken",
                     "StarStrings",
                     "master",
-                    "Data/Localization/english/global.ini"));
+                    "src/For_Players/Data/Localization/english/global.ini"));
 
                 languages.Add(await CreateCustomLanguageOption(
                     "english_sccomplangpack",
-                    "english / ScCompLangPack / ExoAE",
+                    "english / ScCompLangPackRemix / ExoAE",
                     "english",
                     "ExoAE",
                     "ScCompLangPack",
                     "main",
                     "ScCompLangPack/data/Localization/english/global.ini"));
+
+                languages.Add(await CreateCustomLanguageOption(
+                    "english_sccomplangpack_2",
+                    "english / ScCompLangPackRemix2 / ExoAE",
+                    "english",
+                    "ExoAE",
+                    "ScCompLangPack",
+                    "main",
+                    "ScCompLangPackRemix2/data/Localization/english/global.ini"));
 
                 languages.Add(await CreateCustomLanguageOption(
                     "german_scdeutsch",
