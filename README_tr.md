@@ -6,8 +6,9 @@
 - 🇩🇪 [Anleitung auf Deutsch](README_de.md).
 - 🇪🇸 [Instrucciones en Español](README_es.md).
 - 🇮🇹 [Istruzioni in Italiano](README_it.md).
-- 🇧🇷 [Instrução em Português](README_ptbr.md).
+- 🇧🇷 [Instrução em Português](README_pt-BR.md).
 - 🇹🇷 [Türkçe talimatlar](README_tr.md).
+- 🇰🇷 [한국어 안내](README_ko-KR.md).
 
 `SC-TranslationSetup` deposuna hoş geldiniz; bu araç, [StarCitizen-Localization](https://github.com/Dymerz/StarCitizen-Localization) deposundaki çevirileri kullanarak Star Citizen’i yerelleştirmek için kurulum sürecini kolaylaştırır. Yerelleştirme dosyalarının kurulumu basitleştirilerek, oyunu tercih ettiğiniz dilde oynamak isteyen oyuncular için sorunsuz bir deneyim hedeflenir.
 

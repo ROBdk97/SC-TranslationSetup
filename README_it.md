@@ -6,8 +6,9 @@
 - 🇩🇪 [Anleitung auf Deutsch](README_de.md).
 - 🇪🇸 [Instrucciones en Español](README_es.md).
 - 🇮🇹 [Istruzioni in Italiano](README_it.md).
-- 🇧🇷 [Instrução em Português](README_ptbr.md).
+- 🇧🇷 [Instrução em Português](README_pt-BR.md).
 - 🇹🇷 [Türkçe talimatlar](README_tr.md).
+- 🇰🇷 [한국어 안내](README_ko-KR.md).
 
 Benvenuti nel repository `SC-TranslationSetup`, lo strumento di configurazione ideale per localizzare Star Citizen usando le traduzioni del repository [StarCitizen-Localization](https://github.com/Dymerz/StarCitizen-Localization). Questo strumento è progettato per semplificare l'installazione dei file di localizzazione, garantendo un'esperienza fluida per i giocatori che desiderano godersi Star Citizen nella loro lingua preferita.
 
